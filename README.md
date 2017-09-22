@@ -1,6 +1,6 @@
-<Introduce aquí tu DNI o NIE sin la letra final, si es un NIE con la letra inicial en mayúsculas>
+77634861
 
 # Prácticas de Programación 3: Juego de la vida de Conway
-**Alumno/a:** <Introduce aquí tu nombre y apellidos>
+**Alumno/a:** Daniel Díaz Lajara
 
-**Grupo de prácticas:** <Introduce aquí tu grupo de prácticas>
+**Grupo de prácticas:** Grupo 40; viernes 10:00-12:00
