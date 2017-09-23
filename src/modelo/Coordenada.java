@@ -14,6 +14,7 @@ public class Coordenada {
 	public Coordenada(int x,int y) {
 		this.x=x;
 		this.y=y;
+		NUMERO_COORDENADAS++;
 	}
 	public Coordenada(Coordenada otra) {
 		x=otra.x;
@@ -24,7 +25,7 @@ public class Coordenada {
 	}
 	@Override
 	public String toString() {
-		return "Coordenada [x=" + x + ", y=" + y + "]";
+		return "(" + x + "," + y + ")";
 	}
 	@Override
 	public int hashCode() {
@@ -56,6 +57,7 @@ public class Coordenada {
 		return y;
 	}
 	public Coordenada suma(Coordenada otra) {
-		
+		Coordenada nueva=new Coordenada(x+otra.x,y+otra.y);
+		return(nueva);
 	}
 }
