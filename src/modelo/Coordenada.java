@@ -19,6 +19,7 @@ public class Coordenada {
 	public Coordenada(Coordenada otra) {
 		x=otra.x;
 		y=otra.y;
+		NUMERO_COORDENADAS++;
 	}
 	public static int getNumeroCoordenadas() {
 		return NUMERO_COORDENADAS;
