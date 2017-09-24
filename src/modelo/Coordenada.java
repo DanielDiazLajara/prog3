@@ -1,29 +1,49 @@
 /**
  * @author Daniel Díaz Lajara 77634861V
- * @date 
- * @param explica parámetros
- * @return qué devuelve la función 
+ * @date 24/09/2017
  */
 package modelo;
-
+/**
+ * La clase Coordenada nos permite crear coordenadas
+ * bidimensionales y realizar operaciones con ellas.
+ */
 public class Coordenada {
+	/**
+	 * Los atributos x e y denotan la posición en fila
+	 * y en columna respectivamente.
+	 * NUMERO_COORDENADAS denota la cantidad de coordenadas.
+	 */
 	private int x;
 	private int y;
 	private static int NUMERO_COORDENADAS;
-	
+	/**
+	 * Constructor por defecto
+	 * @param x, fila de la nueva coordenada a crear.
+	 * @param y, columna de la nueva coordenada a crear.
+	 */
 	public Coordenada(int x,int y) {
 		this.x=x;
 		this.y=y;
 		NUMERO_COORDENADAS++;
 	}
+	/**
+	 * Constructor de copia.
+	 * @param otra, Coordenada que queremos copiar.
+	 */
 	public Coordenada(Coordenada otra) {
 		x=otra.x;
 		y=otra.y;
 		NUMERO_COORDENADAS++;
 	}
+	/**
+	 * @return el número de coordenadas creadas.
+	 */
 	public static int getNumeroCoordenadas() {
 		return NUMERO_COORDENADAS;
 	}
+	/**
+	 * Muestra coordenada en formato (x,y).
+	 */
 	@Override
 	public String toString() {
 		return "(" + x + "," + y + ")";
@@ -36,6 +56,10 @@ public class Coordenada {
 		result = prime * result + y;
 		return result;
 	}
+	/**
+	 * Compara objetos.
+	 * @return true si dichos objetos son iguales.
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -51,12 +75,23 @@ public class Coordenada {
 			return false;
 		return true;
 	}
+	/**
+	 * @return valor de x.
+	 */
 	public int getX() {
 		return x;
 	}
+	/**
+	 * @return valor de y.
+	 */
 	public int getY() {
 		return y;
 	}
+	/**
+	 * Suma 2 coordenadas y devuelve otra resultado de dicha operación.
+	 * @param otra almacena la coordenada que queremos sumar.
+	 * @return coordenada resultado de la suma.
+	 */
 	public Coordenada suma(Coordenada otra) {
 		Coordenada nueva=new Coordenada(x+otra.x,y+otra.y);
 		return(nueva);
