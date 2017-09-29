@@ -26,7 +26,7 @@ public class Coordenada {
 		this.y=y;
 		NUMERO_COORDENADAS++;
 	}
-	/**
+	/.**
 	 * Constructor de copia.
 	 * @param otra, Coordenada que queremos copiar.
 	 */
