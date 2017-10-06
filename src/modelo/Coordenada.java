@@ -5,12 +5,13 @@
 package modelo;
 /**
  * La clase Coordenada nos permite crear coordenadas
- * bidimensionales y realizar operaciones con ellas.
+ * bidimensionales y realizar operaciones con ellas,
+ * tales como sumarlas, copiarlas, crearlas...
  */
 public class Coordenada {
 	/**
-	 * Los atributos x e y denotan la posición en fila
-	 * y en columna respectivamente.
+	 * EL atributo x denota la posición en fila de la coordenada
+	 * El atributo y denota la posición en columna de la coordenada
 	 * NUMERO_COORDENADAS denota la cantidad de coordenadas.
 	 */
 	private int x;
@@ -18,15 +19,15 @@ public class Coordenada {
 	private static int NUMERO_COORDENADAS;
 	/**
 	 * Constructor por defecto
-	 * @param x, fila de la nueva coordenada a crear.
-	 * @param y, columna de la nueva coordenada a crear.
+	 * @param x fila de la nueva coordenada a crear.
+	 * @param y columna de la nueva coordenada a crear.
 	 */
 	public Coordenada(int x,int y) {
 		this.x=x;
 		this.y=y;
 		NUMERO_COORDENADAS++;
 	}
-	/.**
+	/**
 	 * Constructor de copia.
 	 * @param otra, Coordenada que queremos copiar.
 	 */
