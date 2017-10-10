@@ -11,7 +11,7 @@ public class Tablero {
 	private Coordenada dimensiones;
 	//private hasmap
 	
-	public Tablero(Coordenada dimensiones) {
+	public Tablero(Coordenada dimensiones){
 		this.dimensiones=dimensiones;
 		for(int i=0;i<this.dimensiones.getX();i++) {
 			for(int j=0;j<this.dimensiones.getY();j++) {
@@ -24,16 +24,31 @@ public class Tablero {
 		return(dimensiones);
 	}
 	public Collection<Coordenada> getPosiciones(){
-		Collection<Coordenada> coleccion;
-		Collection<Coordenada> coordenadas=celdas.keySet();
-		for(Coordenada coord:coordenadas) {
-			coleccion.add(new Coordenada(coord));
-		}
-		return(coleccion);
-		
-		
+		Collection <Coordenada> coordenadas = celdas.keySet();
+		return(coordenadas);
 	}
-	
-	
+	private void muestraErrorPosicionInvalida(Coordenada c){
+		System.out.println("Error: La celda "+c.toString()+" no exite\n");
+	}
+	public EstadoCelda getCelda(Coordenada posicion) {
+		Collection<Coordenada> coordenadas=this.getPosiciones();
+		EstadoCelda estado;
+		if(coordenadas.contains(posicion)) {
+			estado=celdas.get(posicion);
+			return(estado);
+		}
+		else {
+			muestraErrorPosicionInvalida(posicion);
+			return(null);
+		}
+	}
+	public void setCelda(Coordenada posicion,EstadoCelda e) {
+		Collection<Coordenada> coordenadas=this.getPosiciones();
+		if(coordenadas.contains(posicion)) {
+			celdas.put(new Coordenada(posicion),e);
+		}
+		else
+			muestraErrorPosicionInvalida(posicion);
+	}
 	
 }
