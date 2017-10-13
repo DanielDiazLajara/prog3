@@ -4,7 +4,7 @@ import java.util.Collection;
 
 public class Patron {
 	private String nombre;
-	protected Tablero tablero;
+	Tablero tablero;
 	public Patron(String nombre,Tablero tablero) {
 		this.nombre=nombre;
 		this.tablero=tablero;
@@ -33,6 +33,8 @@ public class Patron {
 		StringBuilder s = new StringBuilder();
 		s.append(nombre);
 		s.append("\n");
+		s.append(tablero.toString());
+		return(s.toString());
 		
 	}
 	
