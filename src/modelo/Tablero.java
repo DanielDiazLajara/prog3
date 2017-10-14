@@ -121,7 +121,7 @@ public class Tablero {
 		for(Coordenada i : coords_patron) {
 			if(result==true&&!coords_tablero.contains(i.suma(coordinicial))) {
 				result=false;
-				muestraErrorPosicionInvalida(i);
+				muestraErrorPosicionInvalida(i.suma(coordinicial));
 				return(false);
 			}
 		}
@@ -166,9 +166,10 @@ public class Tablero {
 				cadena.append("+");
 				for(int k=0;k<x+1;k++)
 					cadena.append("-");
-				cadena.append("+\n");	
+				cadena.append("+");
 			}
 			else {
+				if(i==1)cadena.append("\n");	
 				cadena.append("|");
 				for(int j=0;j<x+1;j++) {
 					if(getCelda(new Coordenada(j,i-1))==estado_viva)
