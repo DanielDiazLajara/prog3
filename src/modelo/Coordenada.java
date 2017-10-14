@@ -1,6 +1,5 @@
 /**
  * @author Daniel Díaz Lajara 77634861V
- * @date 24/09/2017
  */
 package modelo;
 /**
@@ -11,11 +10,15 @@ package modelo;
 public class Coordenada {
 	/**
 	 * EL atributo x denota la posición en fila de la coordenada
-	 * El atributo y denota la posición en columna de la coordenada
-	 * NUMERO_COORDENADAS denota la cantidad de coordenadas.
 	 */
 	private int x;
+	/**
+	 * El atributo y denota la posición en columna de la coordenada
+	 */
 	private int y;
+	/**
+	 * NUMERO_COORDENADAS denota la cantidad de coordenadas.
+	 */
 	private static int NUMERO_COORDENADAS;
 	/**
 	 * Constructor por defecto

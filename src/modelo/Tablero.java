@@ -6,30 +6,62 @@ package modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-
+/**
+ * Esta clase nos permite crear un tablero
+ * que tiene dimensiones x*y y operar las 
+ * diferentes celdas que allí se encuentran
+ *
+ */
 public class Tablero {
+	/**
+	 * celdas contiene un hashmap en el que cada celda tiene una coordenada y un estado
+	 * 
+	 */
 	private HashMap<Coordenada,EstadoCelda> celdas= new HashMap<Coordenada,EstadoCelda>();
+	/**
+	 * dimensiones contiene las dimensiones x*y del tablero
+	 */
 	private Coordenada dimensiones;
-//REVISAR COPIAS DEFENSIVAS	
+	/**
+	 * Constructor por defecto que crea el tablero e inicializa sus celdas a MUERTA
+	 * @param dimensiones pasa las medidas del tablero, x de ancho e y de largo
+	 */
 	public Tablero(Coordenada dimensiones){
 		this.dimensiones=new Coordenada(dimensiones);
-		for(int i=0;i<this.dimensiones.getX();i++) {
-			for(int j=0;j<this.dimensiones.getY();j++) {
+		for(int i=0;i<dimensiones.getX();i++) {
+			for(int j=0;j<dimensiones.getY();j++) {
 				celdas.put(new Coordenada(i,j),
 						       EstadoCelda.MUERTA);
 			}
 		}
 	}
+	/**
+	 * getter de dimensiones
+	 * @return devuelve las dimensiones del tablero
+	 */
 	public Coordenada getDimensiones() {
 		return(dimensiones);
 	}
+	/**
+	 * getter de las posiciones del tablero
+	 * @return devuelve un collection con las coordenadas de las celdas
+	 */
 	public Collection<Coordenada> getPosiciones(){
 		Collection <Coordenada> coordenadas = celdas.keySet();
 		return(coordenadas);
 	}
+	/**
+	 * MUestra un error de posición de la celda c
+	 * @param c es la celda sobre la que se da el error
+	 */
 	private void muestraErrorPosicionInvalida(Coordenada c){
 		System.out.println("Error: La celda "+c.toString()+" no exite\n");
 	}
+	/**
+	 * getter del estado de una celda que se pasa por parámetros
+	 * @param posicion celda de la que queremos saber el estado
+	 * @return devuelve el estado de la celda posicion
+	 */
 	public EstadoCelda getCelda(Coordenada posicion) {
 		Collection<Coordenada> coordenadas=this.getPosiciones();
 		EstadoCelda estado;
@@ -42,6 +74,11 @@ public class Tablero {
 			return(null);
 		}
 	}
+	/**
+	 * Setter para cambiar el estado de una celda
+	 * @param posicion es la celda cuyo estado queremos cambiar
+	 * @param e es el nuevo estado que queremos para la celda
+	 */
 	public void setCelda(Coordenada posicion,EstadoCelda e) {
 		Collection<Coordenada> coordenadas=this.getPosiciones();
 		if(coordenadas.contains(posicion)) {
@@ -50,6 +87,12 @@ public class Tablero {
 		else
 			muestraErrorPosicionInvalida(posicion);
 	}
+	/**
+	 * devuelve un array con las posiciones alrededor de una celda dada,
+	 * comenzando por la esquina superior izquierda y en sentido antihorario
+	 * @param p celda cuyas vecinas queremos conocer
+	 * @return devuelve un array con las celdas vecinas
+	 */
 	public ArrayList<Coordenada> getPosicionesVecinasCCW (Coordenada p){
 		ArrayList<Coordenada> lista =new ArrayList<Coordenada>();
 		Collection<Coordenada> coordenadas=this.getPosiciones();
@@ -65,7 +108,13 @@ public class Tablero {
 			lista.add(new Coordenada(p.getX()-1,p.getY()));
 		return(lista);
 	}
-	boolean cargaPatron(Patron patron, Coordenada coordinicial) {
+	/**
+	 * Intenta cargar un patron a partir de una celda dada
+	 * @param patron es el patron que quermos cargar en nuestro tablero
+	 * @param coordinicial celda sobre la que queremos comenzar la carga del tablero
+	 * @return devuelve true si se ppuede cargar y false si no
+	 */
+	public boolean cargaPatron(Patron patron, Coordenada coordinicial) {
 		boolean result=true;
 		Collection<Coordenada> coords_tablero=getPosiciones();
 		Collection<Coordenada> coords_patron=patron.getPosiciones();
@@ -84,7 +133,12 @@ public class Tablero {
 		}
 		return result;
 	}
-	boolean contiene(Coordenada posicion) {
+	/**
+	 * Comprueba que las celdas estén en un tablero concreto
+	 * @param posicion es la celda que queremos comprobar
+	 * @return devuelve true si la celda se encuentra en el tablero y false si no
+	 */
+	public boolean contiene(Coordenada posicion) {
 		Collection<Coordenada> coordenadas=getPosiciones();
 		if(coordenadas.contains(posicion))
 			return(true);
@@ -92,6 +146,9 @@ public class Tablero {
 			return(false);
 	}
 	@Override
+	/**
+	 * toString de la clase Tablero
+	 */
 	public String toString() {
 		EstadoCelda estado_viva= EstadoCelda.VIVA;
 		Collection<Coordenada> coords=getPosiciones();
@@ -104,17 +161,17 @@ public class Tablero {
 			if(coord.getY()>y)
 				y=coord.getY();
 		}
-		for(int i=0;i<(x+3);i++) {
-			if(i==0||i==x+2) {
+		for(int i=0;i<(y+3);i++) {
+			if(i==0||i==y+2) {
 				cadena.append("+");
-				for(int k=0;k<y+1;k++)
+				for(int k=0;k<x+1;k++)
 					cadena.append("-");
 				cadena.append("+\n");	
 			}
 			else {
 				cadena.append("|");
-				for(int j=0;j<y+1;j++) {
-					if(getCelda(new Coordenada(i-1,j))==estado_viva)
+				for(int j=0;j<x+1;j++) {
+					if(getCelda(new Coordenada(j,i-1))==estado_viva)
 						cadena.append("*");
 					else
 						cadena.append(" ");

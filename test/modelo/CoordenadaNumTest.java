@@ -8,7 +8,6 @@ import modelo.Coordenada;
 
 /**
 @author jgonzalo
-@date 13/09/2013
  **/
 public class CoordenadaNumTest {
 	Coordenada c;

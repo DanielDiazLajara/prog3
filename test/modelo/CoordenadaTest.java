@@ -7,7 +7,6 @@ import org.junit.Test;
 
 /**
 @author jgonzalo
-@date 13/09/2013
  **/
 public class CoordenadaTest {
 	Coordenada c;
