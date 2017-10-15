@@ -1,5 +1,5 @@
 /**
- * @author Daniel Díaz Lajara
+ * @author Daniel Díaz Lajara 77634861V
  */
 package modelo;
 
@@ -55,7 +55,7 @@ public class Tablero {
 	 * @param c es la celda sobre la que se da el error
 	 */
 	private void muestraErrorPosicionInvalida(Coordenada c){
-		System.out.println("Error: La celda "+c.toString()+" no exite\n");
+		System.out.println("Error: La celda "+c.toString()+" no exite");
 	}
 	/**
 	 * getter del estado de una celda que se pasa por parámetros
@@ -96,16 +96,22 @@ public class Tablero {
 	public ArrayList<Coordenada> getPosicionesVecinasCCW (Coordenada p){
 		ArrayList<Coordenada> lista =new ArrayList<Coordenada>();
 		Collection<Coordenada> coordenadas=this.getPosiciones();
-		for(int i=-1;i<=1;i++)
-			if(coordenadas.contains(new Coordenada(p.getX(),p.getY()-1)))
-				lista.add(new Coordenada(p.getX(),p.getY()-1));
-		if(coordenadas.contains(new Coordenada(p.getX()+1,p.getY())))
-			lista.add(new Coordenada(p.getX()+1,p.getY()));
-		for(int i=1;i>=-1;i--)
-			if(coordenadas.contains(new Coordenada(p.getX(),p.getY()+1)))
-				lista.add(new Coordenada(p.getX(),p.getY()+1));
+		if(coordenadas.contains(new Coordenada(p.getX()-1,p.getY()-1)))
+			lista.add(new Coordenada(p.getX()-1,p.getY()-1));
 		if(coordenadas.contains(new Coordenada(p.getX()-1,p.getY())))
 			lista.add(new Coordenada(p.getX()-1,p.getY()));
+		if(coordenadas.contains(new Coordenada(p.getX()-1,p.getY()+1)))
+			lista.add(new Coordenada(p.getX()-1,p.getY()+1));
+		if(coordenadas.contains(new Coordenada(p.getX(),p.getY()+1)))
+			lista.add(new Coordenada(p.getX(),p.getY()+1));
+		if(coordenadas.contains(new Coordenada(p.getX()+1,p.getY()+1)))
+			lista.add(new Coordenada(p.getX()+1,p.getY()+1));
+		if(coordenadas.contains(new Coordenada(p.getX()+1,p.getY())))
+			lista.add(new Coordenada(p.getX()+1,p.getY()));
+		if(coordenadas.contains(new Coordenada(p.getX()+1,p.getY()-1)))
+			lista.add(new Coordenada(p.getX()+1,p.getY()-1));
+		if(coordenadas.contains(new Coordenada(p.getX(),p.getY()-1)))
+			lista.add(new Coordenada(p.getX(),p.getY()-1));
 		return(lista);
 	}
 	/**
@@ -181,6 +187,5 @@ public class Tablero {
 			}
 		}
 		return cadena.toString();
-				
 	}
 }

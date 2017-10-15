@@ -24,7 +24,7 @@ public class Patron {
 	 * @param tablero da un tablero al patrón
 	 */
 	public Patron(String nombre,Tablero tablero) {
-		this.nombre=nombre;
+		this.nombre=new String(nombre);
 		this.tablero=tablero;
 	}
 	/**
@@ -47,7 +47,7 @@ public class Patron {
 			return(estado);
 		}
 		else {
-			System.out.println("Error: La celda "+coord.toString()+" no exite\n");
+			System.out.println("Error: La celda "+coord.toString()+" no exite");
 			return(null);
 		}
 	}

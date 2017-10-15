@@ -29,12 +29,9 @@ public class ReglaConway {
 		ArrayList<Coordenada> lista=tab.getPosicionesVecinasCCW(coord);
 		//Contamos vivas y muertas
 		int viva=new Integer(0);
-		int muerta=new Integer(0);
 		for (Coordenada i:lista) {
 			if(tab.getCelda(i)==estado_viva)
 				viva++;
-			else
-				muerta++;
 		}
 		if(tab.getCelda(coord)==estado_viva) {
 			if(viva==2||viva==3)

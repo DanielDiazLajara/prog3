@@ -75,5 +75,4 @@ public class Juego {
 		}
 		return(patrones);	
 	}
-	
 }

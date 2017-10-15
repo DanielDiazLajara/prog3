@@ -26,8 +26,8 @@ public class Coordenada {
 	 * @param y columna de la nueva coordenada a crear.
 	 */
 	public Coordenada(int x,int y) {
-		this.x=x;
-		this.y=y;
+		this.x=new Integer(x);
+		this.y=new Integer(y);
 		NUMERO_COORDENADAS++;
 	}
 	/**
@@ -35,8 +35,8 @@ public class Coordenada {
 	 * @param otra, Coordenada que queremos copiar.
 	 */
 	public Coordenada(Coordenada otra) {
-		x=otra.x;
-		y=otra.y;
+		x=new Integer(otra.x);
+		y=new Integer(otra.y);
 		NUMERO_COORDENADAS++;
 	}
 	/**
