@@ -63,9 +63,8 @@ public class Tablero {
 	 * @return devuelve el estado de la celda posicion
 	 */
 	public EstadoCelda getCelda(Coordenada posicion) {
-		Collection<Coordenada> coordenadas=this.getPosiciones();
 		EstadoCelda estado;
-		if(coordenadas.contains(posicion)) {
+		if(contiene(posicion)) {
 			estado=celdas.get(posicion);
 			return(estado);
 		}
@@ -96,22 +95,26 @@ public class Tablero {
 	public ArrayList<Coordenada> getPosicionesVecinasCCW (Coordenada p){
 		ArrayList<Coordenada> lista =new ArrayList<Coordenada>();
 		Collection<Coordenada> coordenadas=this.getPosiciones();
-		if(coordenadas.contains(new Coordenada(p.getX()-1,p.getY()-1)))
-			lista.add(new Coordenada(p.getX()-1,p.getY()-1));
-		if(coordenadas.contains(new Coordenada(p.getX()-1,p.getY())))
-			lista.add(new Coordenada(p.getX()-1,p.getY()));
-		if(coordenadas.contains(new Coordenada(p.getX()-1,p.getY()+1)))
-			lista.add(new Coordenada(p.getX()-1,p.getY()+1));
-		if(coordenadas.contains(new Coordenada(p.getX(),p.getY()+1)))
-			lista.add(new Coordenada(p.getX(),p.getY()+1));
-		if(coordenadas.contains(new Coordenada(p.getX()+1,p.getY()+1)))
-			lista.add(new Coordenada(p.getX()+1,p.getY()+1));
-		if(coordenadas.contains(new Coordenada(p.getX()+1,p.getY())))
-			lista.add(new Coordenada(p.getX()+1,p.getY()));
-		if(coordenadas.contains(new Coordenada(p.getX()+1,p.getY()-1)))
-			lista.add(new Coordenada(p.getX()+1,p.getY()-1));
-		if(coordenadas.contains(new Coordenada(p.getX(),p.getY()-1)))
-			lista.add(new Coordenada(p.getX(),p.getY()-1));
+		if (contiene(p)) {
+			if(coordenadas.contains(new Coordenada(p.getX()-1,p.getY()-1)))
+				lista.add(new Coordenada(p.getX()-1,p.getY()-1));
+			if(coordenadas.contains(new Coordenada(p.getX()-1,p.getY())))
+				lista.add(new Coordenada(p.getX()-1,p.getY()));
+			if(coordenadas.contains(new Coordenada(p.getX()-1,p.getY()+1)))
+				lista.add(new Coordenada(p.getX()-1,p.getY()+1));
+			if(coordenadas.contains(new Coordenada(p.getX(),p.getY()+1)))
+				lista.add(new Coordenada(p.getX(),p.getY()+1));
+			if(coordenadas.contains(new Coordenada(p.getX()+1,p.getY()+1)))
+				lista.add(new Coordenada(p.getX()+1,p.getY()+1));
+			if(coordenadas.contains(new Coordenada(p.getX()+1,p.getY())))
+				lista.add(new Coordenada(p.getX()+1,p.getY()));
+			if(coordenadas.contains(new Coordenada(p.getX()+1,p.getY()-1)))
+				lista.add(new Coordenada(p.getX()+1,p.getY()-1));
+			if(coordenadas.contains(new Coordenada(p.getX(),p.getY()-1)))
+				lista.add(new Coordenada(p.getX(),p.getY()-1));
+		}
+		else
+			return(null);
 		return(lista);
 	}
 	/**
@@ -186,6 +189,7 @@ public class Tablero {
 				cadena.append("|\n");
 			}
 		}
+		cadena.append("\n");
 		return cadena.toString();
 	}
 }
