@@ -55,7 +55,7 @@ public class Tablero {
 	 * @param c es la celda sobre la que se da el error
 	 */
 	private void muestraErrorPosicionInvalida(Coordenada c){
-		System.out.println("Error: La celda "+c.toString()+" no exite");
+		System.out.println("Error: La celda "+c.toString()+" no existe");
 	}
 	/**
 	 * getter del estado de una celda que se pasa por parámetros
@@ -64,7 +64,8 @@ public class Tablero {
 	 */
 	public EstadoCelda getCelda(Coordenada posicion) {
 		EstadoCelda estado;
-		if(contiene(posicion)) {
+		Collection<Coordenada> coordenadas=getPosiciones();
+		if(coordenadas.contains(posicion)) {
 			estado=celdas.get(posicion);
 			return(estado);
 		}
@@ -125,22 +126,20 @@ public class Tablero {
 	 */
 	public boolean cargaPatron(Patron patron, Coordenada coordinicial) {
 		boolean result=true;
-		Collection<Coordenada> coords_tablero=getPosiciones();
+		Collection<Coordenada> coords_tablero=this.getPosiciones();
 		Collection<Coordenada> coords_patron=patron.getPosiciones();
-		for(Coordenada i : coords_patron) {
-			if(result==true&&!coords_tablero.contains(i.suma(coordinicial))) {
+		for(Coordenada coord : coords_patron) {
+			if(result==true&&!coords_tablero.contains(coord.suma(coordinicial))) {
 				result=false;
-				muestraErrorPosicionInvalida(i.suma(coordinicial));
-				return(false);
+				muestraErrorPosicionInvalida(coord.suma(coordinicial));
 			}
 		}
 		if(result) {
 			for(Coordenada i : coords_patron) {
 				setCelda(i.suma(coordinicial),patron.getCelda(i));
 			}
-			return(true);
 		}
-		return result;
+		return(result);
 	}
 	/**
 	 * Comprueba que las celdas estén en un tablero concreto

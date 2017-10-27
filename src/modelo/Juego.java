@@ -5,7 +5,6 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 /**
  * La clase juego relaciona un tablero con varios patrones
  * y con una serie de reglas para llevar a cabo el juego
@@ -23,7 +22,7 @@ public class Juego {
 	/**
 	 * El atributo patrones usados almacena los patrones cargados sobre el tablero
 	 */
-	private List<Patron> patronesUsados=new ArrayList<Patron>();
+	private ArrayList<Patron> patronesUsados=new ArrayList<Patron>();
 	/**
 	 * Constructor del Juego
 	 * @param tab pasa un tablero para crear el juego
@@ -40,7 +39,7 @@ public class Juego {
 	 */
 	public void cargaPatron(Patron patron,Coordenada coord) {
 		if(tablero.cargaPatron(patron,coord)) {
-			patronesUsados.add(patron);
+			this.patronesUsados.add(patron);
 		}
 		else
 			System.out.println("Error cargando plantilla "+patron.getNombre()+" en "+coord.toString());
@@ -69,10 +68,10 @@ public class Juego {
 	 * @return devuelve un arraylist con los patrones que se han usado
 	 */
 	public ArrayList<Patron> getPatrones(){
-		ArrayList<Patron> patrones= new ArrayList<Patron>();
+		/*ArrayList<Patron> patrones= new ArrayList<Patron>();
 		for(Patron patron: patronesUsados) {
 			patrones.add(patron);
-		}
-		return(patrones);	
+		}*/
+		return(patronesUsados);	
 	}
 }
