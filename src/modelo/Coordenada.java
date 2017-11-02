@@ -2,6 +2,10 @@
  * @author Daniel Díaz Lajara 77634861V
  */
 package modelo;
+
+import modelo.excepciones.ExcepcionArgumentosIncorrectos;
+import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
+
 /**
  * La clase Coordenada nos permite crear coordenadas
  * bidimensionales y realizar operaciones con ellas,
@@ -17,33 +21,25 @@ public class Coordenada {
 	 */
 	private int y;
 	/**
-	 * NUMERO_COORDENADAS denota la cantidad de coordenadas.
-	 */
-	private static int NUMERO_COORDENADAS;
-	/**
 	 * Constructor por defecto
 	 * @param x fila de la nueva coordenada a crear.
 	 * @param y columna de la nueva coordenada a crear.
 	 */
-	public Coordenada(int x,int y) {
+	public Coordenada(int x,int y) throws ExcepcionCoordenadaIncorrecta{
+		if(x<0||y<0)
+			throw new ExcepcionCoordenadaIncorrecta();
 		this.x=new Integer(x);
 		this.y=new Integer(y);
-		NUMERO_COORDENADAS++;
 	}
 	/**
 	 * Constructor de copia.
 	 * @param otra, Coordenada que queremos copiar.
 	 */
-	public Coordenada(Coordenada otra) {
+	public Coordenada(Coordenada otra) throws ExcepcionArgumentosIncorrectos{
+		if(otra==null)
+			throw new ExcepcionArgumentosIncorrectos();
 		x=new Integer(otra.x);
 		y=new Integer(otra.y);
-		NUMERO_COORDENADAS++;
-	}
-	/**
-	 * @return el número de coordenadas creadas.
-	 */
-	public static int getNumeroCoordenadas() {
-		return NUMERO_COORDENADAS;
 	}
 	/**
 	 * Muestra coordenada en formato (x,y).
@@ -96,7 +92,9 @@ public class Coordenada {
 	 * @param otra almacena la coordenada que queremos sumar.
 	 * @return coordenada resultado de la suma.
 	 */
-	public Coordenada suma(Coordenada otra) {
+	public Coordenada suma(Coordenada otra) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta{
+		if(otra == null)
+			throw new ExcepcionArgumentosIncorrectos();
 		Coordenada nueva=new Coordenada(x+otra.x,y+otra.y);
 		return(nueva);
 	}

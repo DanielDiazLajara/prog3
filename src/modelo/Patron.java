@@ -4,6 +4,9 @@
 package modelo;
 
 import java.util.Collection;
+
+import modelo.excepciones.ExcepcionArgumentosIncorrectos;
+import modelo.excepciones.ExcepcionPosicionFueraTablero;
 /**
  * La clase Patron nos ayuda a crear patrrones en forma de tableros
  * Estos patrones podrán ser añadidos a los tableros en el juego
@@ -23,7 +26,9 @@ public class Patron {
 	 * @param nombre pasa un nombre al patrón
 	 * @param tablero da un tablero al patrón
 	 */
-	public Patron(String nombre,Tablero tablero) {
+	public Patron(String nombre,Tablero tablero) throws ExcepcionArgumentosIncorrectos{
+		if(nombre==null||tablero==null)
+			throw new ExcepcionArgumentosIncorrectos();
 		this.nombre=new String(nombre);
 		this.tablero=tablero;
 	}
@@ -39,7 +44,9 @@ public class Patron {
 	 * @param coord coordenada de la que queremos saber el estado
 	 * @return devuelve el estado de la celda con coordenada coord
 	 */
-	public EstadoCelda getCelda(Coordenada coord) {
+	public EstadoCelda getCelda(Coordenada coord) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos{
+		if(coord==null)
+			throw new ExcepcionArgumentosIncorrectos();
 		Collection<Coordenada> coordenadas=tablero.getPosiciones();
 		EstadoCelda estado;
 		if(coordenadas.contains(coord)) {

@@ -4,6 +4,9 @@
 package modelo;
 
 import java.util.ArrayList;
+
+import modelo.excepciones.ExcepcionArgumentosIncorrectos;
+import modelo.excepciones.ExcepcionPosicionFueraTablero;
 /**
  * Esta clase establece la regla que debemos usar
  * a la hora de alterar el estado de las celdas
@@ -22,7 +25,9 @@ public class ReglaConway {
 	 * @param coord pasa las coordenadas de la celda que queremos calcular
 	 * @return devuelve el EstadoCelda a asignar a la celda coord
 	 */
-	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tab, Coordenada coord) {
+	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tab, Coordenada coord) throws ExcepcionPosicionFueraTablero,ExcepcionArgumentosIncorrectos{
+		if(coord==null)
+			throw new ExcepcionArgumentosIncorrectos();
 		EstadoCelda estado_viva= EstadoCelda.VIVA;
 		EstadoCelda estado_muerta= EstadoCelda.MUERTA;
 
