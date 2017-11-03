@@ -17,34 +17,24 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  * diferentes celdas que allí se encuentran
  *
  */
-public class Tablero {
+public abstract class Tablero {
 	/**
 	 * celdas contiene un hashmap en el que cada celda tiene una coordenada y un estado
 	 * 
 	 */
-	private HashMap<Coordenada,EstadoCelda> celdas= new HashMap<Coordenada,EstadoCelda>();
+	protected HashMap<Coordenada,EstadoCelda> celdas= new HashMap<Coordenada,EstadoCelda>();
 	/**
 	 * dimensiones contiene las dimensiones x*y del tablero
 	 */
-	private Coordenada dimensiones;
+	protected Coordenada dimensiones;
 	/**
 	 * Constructor por defecto que crea el tablero e inicializa sus celdas a MUERTA
 	 * @param dimensiones pasa las medidas del tablero, x de ancho e y de largo
 	 */
-	public Tablero(Coordenada dimensiones) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta{
+	protected Tablero(Coordenada dimensiones) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta{
 		if(dimensiones==null)
 			throw new ExcepcionArgumentosIncorrectos();
-		this.dimensiones=new Coordenada(dimensiones);
-		for(int i=0;i<dimensiones.getX();i++) {
-			for(int j=0;j<dimensiones.getY();j++) {
-				try {
-				celdas.put(new Coordenada(i,j),
-						       EstadoCelda.MUERTA);
-				}catch (ExcepcionCoordenadaIncorrecta e) {
-					throw new ExcepcionEjecucion(e);
-				}
-			}
-		}
+		this.dimensiones=dimensiones;
 	}
 	/**
 	 * getter de dimensiones
@@ -101,37 +91,7 @@ public class Tablero {
 	 * @param p celda cuyas vecinas queremos conocer
 	 * @return devuelve un array con las celdas vecinas
 	 */
-	public ArrayList<Coordenada> getPosicionesVecinasCCW (Coordenada p)throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos,ExcepcionEjecucion{
-		if(p==null)
-			throw new ExcepcionArgumentosIncorrectos();
-		ArrayList<Coordenada> lista =new ArrayList<Coordenada>();
-		Collection<Coordenada> coordenadas=this.getPosiciones();
-		if (contiene(p)) {
-			try {
-			if(coordenadas.contains(new Coordenada(p.getX()-1,p.getY()-1)))
-				lista.add(new Coordenada(p.getX()-1,p.getY()-1));
-			if(coordenadas.contains(new Coordenada(p.getX()-1,p.getY())))
-				lista.add(new Coordenada(p.getX()-1,p.getY()));
-			if(coordenadas.contains(new Coordenada(p.getX()-1,p.getY()+1)))
-				lista.add(new Coordenada(p.getX()-1,p.getY()+1));
-			if(coordenadas.contains(new Coordenada(p.getX(),p.getY()+1)))
-				lista.add(new Coordenada(p.getX(),p.getY()+1));
-			if(coordenadas.contains(new Coordenada(p.getX()+1,p.getY()+1)))
-				lista.add(new Coordenada(p.getX()+1,p.getY()+1));
-			if(coordenadas.contains(new Coordenada(p.getX()+1,p.getY())))
-				lista.add(new Coordenada(p.getX()+1,p.getY()));
-			if(coordenadas.contains(new Coordenada(p.getX()+1,p.getY()-1)))
-				lista.add(new Coordenada(p.getX()+1,p.getY()-1));
-			if(coordenadas.contains(new Coordenada(p.getX(),p.getY()-1)))
-				lista.add(new Coordenada(p.getX(),p.getY()-1));
-			}catch(ExcepcionCoordenadaIncorrecta e) {
-				throw new ExcepcionEjecucion(e);
-			}
-		}
-		else
-			throw new ExcepcionPosicionFueraTablero(p,dimensiones);
-		return(lista);
-	}
+	public abstract ArrayList<Coordenada> getPosicionesVecinasCCW (Coordenada p)throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos,ExcepcionEjecucion;
 	/**
 	 * Intenta cargar un patron a partir de una celda dada
 	 * @param patron es el patron que quermos cargar en nuestro tablero

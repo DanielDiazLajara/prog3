@@ -3,6 +3,6 @@ package modelo.excepciones;
 @SuppressWarnings("serial")
 public class ExcepcionArgumentosIncorrectos extends ExcepcionEjecucion{
 	public ExcepcionArgumentosIncorrectos(){
-		super("");
+		super("Error argumentos incorrectos");
 	}
 }
