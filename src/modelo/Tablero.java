@@ -80,7 +80,7 @@ public abstract class Tablero {
 			throw new ExcepcionArgumentosIncorrectos();
 		Collection<Coordenada> coordenadas=this.getPosiciones();
 		if(coordenadas.contains(posicion)) {
-			celdas.put(new Coordenada(posicion),e);
+			celdas.put(posicion,e);
 		}
 		else
 			throw new ExcepcionPosicionFueraTablero(posicion,dimensiones);
@@ -132,48 +132,6 @@ public abstract class Tablero {
 		else
 			return(false);
 	}
-	@Override
-	/**
-	 * toString de la clase Tablero
-	 */
-	public String toString() throws ExcepcionEjecucion{
-		EstadoCelda estado_viva= EstadoCelda.VIVA;
-		Collection<Coordenada> coords=getPosiciones();
-		StringBuilder cadena=new StringBuilder();
-		int x=new Integer(0);
-		int y=new Integer(0);
-		for(Coordenada coord : coords) {
-			if(coord.getX()>x)
-				x=coord.getX();
-			if(coord.getY()>y)
-				y=coord.getY();
-		}
-		for(int i=0;i<(y+3);i++) {
-			if(i==0||i==y+2) {
-				cadena.append("+");
-				for(int k=0;k<x+1;k++)
-					cadena.append("-");
-				cadena.append("+");
-			}
-			else {
-				if(i==1)cadena.append("\n");	
-				cadena.append("|");
-				for(int j=0;j<x+1;j++) {
-					try {
-						if(getCelda(new Coordenada(j,i-1))==estado_viva)
-							cadena.append("*");
-						else
-							cadena.append(" ");
-					}catch (ExcepcionPosicionFueraTablero | ExcepcionCoordenadaIncorrecta e) {
-							throw new ExcepcionEjecucion(e);
-					}
-				}
-				cadena.append("|\n");
-			}
-
-		}
-		cadena.append("\n");
-		return cadena.toString();
-	}
+	
 	
 }

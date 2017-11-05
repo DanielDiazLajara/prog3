@@ -56,9 +56,11 @@ public class TableroCeldasCuadradas extends Tablero2D{
 				x=p.getX()+1;
 				y=p.getY()-1;
 					if(coordenadas.contains(new Coordenada2D(x,y)))
-						lista.add(new Coordenada(p.getX()+1,p.getY()-1));
-					if(coordenadas.contains(new Coordenada(p.getX(),p.getY()-1)))
-						lista.add(new Coordenada(p.getX(),p.getY()-1));
+						lista.add(new Coordenada2D(x,y));
+				x=p.getX();
+				y=p.getY()-1;
+					if(coordenadas.contains(new Coordenada2D(x,y)))
+						lista.add(new Coordenada2D(x,y));
 			}catch(ExcepcionCoordenadaIncorrecta e) {
 				throw new ExcepcionEjecucion(e);
 			}
@@ -66,5 +68,50 @@ public class TableroCeldasCuadradas extends Tablero2D{
 		else
 			throw new ExcepcionPosicionFueraTablero(p,dimensiones);
 		return(lista);
+	}
+	
+	@Override
+	/**
+	 * toString de la clase TableroCeldasCuadradas
+	 */
+	public String toString() throws ExcepcionEjecucion{
+		EstadoCelda estado_viva= EstadoCelda.VIVA;
+		Collection<Coordenada> coords=getPosiciones();
+		StringBuilder cadena=new StringBuilder();
+		int x=new Integer(0);
+		int y=new Integer(0);
+		for(Coordenada coord : coords) {
+			Coordenada2D coord2=(Coordenada2D)coord;
+			if(coord2.getX()>x)
+				x=coord2.getX();
+			if(coord2.getY()>y)
+				y=coord2.getY();
+		}
+		for(int i=0;i<(y+3);i++) {
+			if(i==0||i==y+2) {
+				cadena.append("+");
+				for(int k=0;k<x+1;k++)
+					cadena.append("-");
+				cadena.append("+");
+			}
+			else {
+				if(i==1)cadena.append("\n");	
+				cadena.append("|");
+				for(int j=0;j<x+1;j++) {
+					try {
+						if(getCelda(new Coordenada2D(j,i-1))==estado_viva)
+							cadena.append("*");
+						else
+							cadena.append(" ");
+					}catch (ExcepcionPosicionFueraTablero | ExcepcionCoordenadaIncorrecta e) {
+							throw new ExcepcionEjecucion(e);
+					}
+				}
+				cadena.append("|\n");
+			}
+
+		}
+		cadena.append("\n");
+		return cadena.toString();
 	}
 }

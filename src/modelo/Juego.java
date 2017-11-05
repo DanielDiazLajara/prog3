@@ -19,7 +19,7 @@ public class Juego {
 	/**
 	 * El atributo reglaconway establece la regla que sigue el juego
 	 */
-	private ReglaConway regla;
+	private Regla regla;
 	/**
 	 * El tablero es sobre el que se aplica dicha regla
 	 */
@@ -33,7 +33,7 @@ public class Juego {
 	 * @param tab pasa un tablero para crear el juego
 	 * @param regla pasa una reglaConway para crear el juego
 	 */
-	public Juego(Tablero tab, ReglaConway regla) throws ExcepcionArgumentosIncorrectos{
+	public Juego(Tablero tab, Regla regla) throws ExcepcionArgumentosIncorrectos{
 		if(tab==null||regla==null)
 			throw new ExcepcionArgumentosIncorrectos();
 		tablero=tab;
@@ -56,13 +56,30 @@ public class Juego {
 	 */
 	public void actualiza() {
 		try {
-		Tablero tab= new Tablero(tablero.getDimensiones());
-		Collection<Coordenada> coordenadas=tablero.getPosiciones();
-		for(Coordenada coord:coordenadas) {
-			tab.setCelda(coord, regla.calculaSiguienteEstadoCelda(tablero, coord));
-		}
-		for(Coordenada coord: coordenadas)
-			tablero.setCelda(coord, tab.getCelda(coord));
+			if(tablero instanceof TableroCeldasCuadradas) {
+				Coordenada2D coord=new Coordenada2D((Coordenada2D)tablero.getDimensiones());
+				TableroCeldasCuadradas tab= new TableroCeldasCuadradas(coord.getX(),coord.getY());
+				Collection<Coordenada> coordenadas=tablero.getPosiciones();
+			
+				for(Coordenada coord2:coordenadas) {
+					tab.setCelda(coord2, regla.calculaSiguienteEstadoCelda(tablero, coord2));
+				}
+				for(Coordenada coord2: coordenadas)
+					tablero.setCelda(coord2, tab.getCelda(coord2));
+			}else if(tablero instanceof Tablero1D) {
+				Coordenada1D coord=new Coordenada1D((Coordenada1D)tablero.getDimensiones());
+				Tablero1D tab= new Tablero1D(coord.getX());
+				Collection<Coordenada> coordenadas=tablero.getPosiciones();
+			
+				for(Coordenada coord2:coordenadas) {
+					tab.setCelda(coord2, regla.calculaSiguienteEstadoCelda(tablero, coord2));
+				}
+				for(Coordenada coord2: coordenadas)
+					tablero.setCelda(coord2, tab.getCelda(coord2));
+				
+				
+				
+			}
 		}catch(ExcepcionPosicionFueraTablero | ExcepcionCoordenadaIncorrecta e) {
 			throw new ExcepcionEjecucion(e);}
 	}

@@ -13,7 +13,7 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  * pasando estas de vivas a muertas o viceversa
  * según convenga.
  */
-public class ReglaConway {
+public class ReglaConway extends Regla{
 	/**
 	 * Constructor por defecto de ReglaConway
 	 */
@@ -26,7 +26,7 @@ public class ReglaConway {
 	 * @return devuelve el EstadoCelda a asignar a la celda coord
 	 */
 	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tab, Coordenada coord) throws ExcepcionPosicionFueraTablero,ExcepcionArgumentosIncorrectos{
-		if(coord==null)
+		if(coord==null||tab==null)
 			throw new ExcepcionArgumentosIncorrectos();
 		EstadoCelda estado_viva= EstadoCelda.VIVA;
 		EstadoCelda estado_muerta= EstadoCelda.MUERTA;
