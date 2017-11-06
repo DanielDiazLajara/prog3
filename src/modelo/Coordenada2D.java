@@ -77,12 +77,14 @@ public class Coordenada2D extends Coordenada{
 		return true;
 	}
 	/**
+	 * getter de x
 	 * @return valor de x.
 	 */
 	public int getX() {
 		return x;
 	}
 	/**
+	 * getter de y 
 	 * @return valor de y.
 	 */
 	public int getY() {

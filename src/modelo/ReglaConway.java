@@ -20,7 +20,7 @@ public class ReglaConway extends Regla{
 	public ReglaConway() {}
 	
 	/**
-	 * Devuellve el siguiente estado que debe de tener una celda en la iteración siguiente
+	 * Devuelve el siguiente estado que debe de tener una celda en la iteración siguiente
 	 * @param tab pasa el tablero en el que se encuentra la celda a calcular
 	 * @param coord pasa las coordenadas de la celda que queremos calcular
 	 * @return devuelve el EstadoCelda a asignar a la celda coord

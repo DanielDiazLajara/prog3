@@ -1,3 +1,6 @@
+/**
+ * @author Daniel Díaz Lajara 77634861V
+ */
 package modelo;
 
 import java.util.ArrayList;
@@ -7,8 +10,19 @@ import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
-
+/**
+ * 
+ * Esta clase nos permite crear
+ * tablero de una dimensión heredando de Tablero
+ * Estos tableros solo tienen 1 fila
+ */
 public class Tablero1D extends Tablero{
+	/**
+	 * Constructor de Tablero1D
+	 * @param ancho del tablero
+	 * @throws ExcepcionArgumentosIncorrectos
+	 * @throws ExcepcionCoordenadaIncorrecta
+	 */
 	public Tablero1D(int ancho) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta {
 		super(new Coordenada1D(ancho));
 		for(int i=0;i<ancho;i++) {
@@ -20,7 +34,12 @@ public class Tablero1D extends Tablero{
 			}
 		}
 	}
-	
+	/**
+	 * Devuelve las posiciones vecinas a una coordenada
+	 * @param coord es la coordenada cuyas vecinas queremos hayar
+	 * @return lista con las coordenadas vecinas hayadas
+	 */
+	//OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 	public ArrayList<Coordenada> getPosicionesVecinasCCW (Coordenada coord)throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos,ExcepcionEjecucion{
 		int x=new Integer(0);
 
@@ -47,6 +66,9 @@ public class Tablero1D extends Tablero{
 			throw new ExcepcionPosicionFueraTablero(p,dimensiones);
 		return(lista);
 	}
+	/**
+	 * to string del tablero de 1 sola dimensión
+	 */
 	public String toString() throws ExcepcionEjecucion{
 		EstadoCelda estado_viva= EstadoCelda.VIVA;
 		Collection<Coordenada> coords=getPosiciones();

@@ -1,12 +1,28 @@
+/**
+ * @author Daniel Díaz Lajara 77634861V
+ */
 package modelo;
 
 import java.util.ArrayList;
 
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
-
+/**
+ * Clase que extiende regla
+ * regla 30 es una regla para el juego que
+ * será usada en tableros unidimensionales mayormente
+ */
 public class Regla30 extends Regla{
+	/**
+	 * Constructor por defecto de regla
+	 */
+	public Regla30() {}
 	
+	/**
+	 * @param tab tablero para aplicar la regla
+	 * @param coord coordenada sobre la que aplicamos la regla
+	 * @return estado de la celda tras aplicar la regla
+	 */
 	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tab, Coordenada coord)
 			throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos {
 		if(coord==null||tab==null)

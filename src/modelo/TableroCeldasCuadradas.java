@@ -1,3 +1,6 @@
+/**
+ * @author Daniel Díaz Lajara 77634861V
+ */
 package modelo;
 
 import java.util.ArrayList;
@@ -7,12 +10,27 @@ import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
-
+/**
+ * Esta clase que hereda de Tablero y de Tablero2D
+ * nos permite crear tableros de 2 dimensiones
+ * con las celdas cuadradas x*y
+ */
 public class TableroCeldasCuadradas extends Tablero2D{
 
+	/**
+	 * Constructor del tablero
+	 * @param ancho del tablero a crear
+	 * @param alto del tablero a crear
+	 * @throws ExcepcionCoordenadaIncorrecta
+	 */
 	public TableroCeldasCuadradas(int ancho, int alto) throws ExcepcionCoordenadaIncorrecta {
 		super(ancho,alto);
 	}
+	/**
+	 * halla las coordenadas vecinas a una dada
+	 * @param coord coordenada cuyas vecinas queremos hallar
+	 * @return lista con las vecinas halladas
+	 */
 	public ArrayList<Coordenada> getPosicionesVecinasCCW (Coordenada coord)throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos,ExcepcionEjecucion{
 		int x=new Integer(0);
 		int y=new Integer(0);

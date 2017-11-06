@@ -13,7 +13,7 @@ import modelo.excepciones.ExcepcionEjecucion;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 /**
  * Esta clase nos permite crear un tablero
- * que tiene dimensiones x*y y operar las 
+ * que tiene dimensiones  y operar las 
  * diferentes celdas que allí se encuentran
  *
  */
@@ -29,7 +29,7 @@ public abstract class Tablero {
 	protected Coordenada dimensiones;
 	/**
 	 * Constructor por defecto que crea el tablero e inicializa sus celdas a MUERTA
-	 * @param dimensiones pasa las medidas del tablero, x de ancho e y de largo
+	 * @param dimensiones pasa las medidas del tablero
 	 */
 	protected Tablero(Coordenada dimensiones) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta{
 		if(dimensiones==null)
