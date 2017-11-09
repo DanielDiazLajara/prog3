@@ -69,14 +69,17 @@ public class TableroCeldasCuadradas extends Tablero2D{
 						lista.add(new Coordenada2D(x,y));
 				x=p.getX()+1;
 				y=p.getY();
+				if(x>=0&&y>=0)
 					if(coordenadas.contains(new Coordenada2D(x,y)))
 						lista.add(new Coordenada2D(x,y));
 				x=p.getX()+1;
 				y=p.getY()-1;
+				if(x>=0&&y>=0)
 					if(coordenadas.contains(new Coordenada2D(x,y)))
 						lista.add(new Coordenada2D(x,y));
 				x=p.getX();
 				y=p.getY()-1;
+				if(x>=0&&y>=0)
 					if(coordenadas.contains(new Coordenada2D(x,y)))
 						lista.add(new Coordenada2D(x,y));
 			}catch(ExcepcionCoordenadaIncorrecta e) {

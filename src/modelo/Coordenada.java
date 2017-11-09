@@ -19,8 +19,8 @@ public abstract class Coordenada {
 	 * Método abstracto para sumar 2 coordenadas
 	 * @param c coordenada que pasamos para sumar
 	 * @return nueva coordenada resutado de la suma
-	 * @throws ExcepcionArgumentosIncorrectos
-	 * @throws ExcepcionCoordenadaIncorrecta
+	 * @throws ExcepcionArgumentosIncorrectos exceción de argumentos mal introducidos
+	 * @throws ExcepcionCoordenadaIncorrecta Coordenada con valores negativos
 	 */
 	public abstract Coordenada suma (Coordenada c) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta;
 }

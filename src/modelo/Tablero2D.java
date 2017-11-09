@@ -17,7 +17,7 @@ public abstract class Tablero2D extends Tablero{
 	 * @param alto del tablero bidimensional a crear
 	 * @throws ExcepcionCoordenadaIncorrecta
 	 */
-	public Tablero2D(int ancho, int alto) throws ExcepcionCoordenadaIncorrecta{
+	public Tablero2D(int ancho, int alto) throws ExcepcionCoordenadaIncorrecta, ExcepcionEjecucion{
 		super(new Coordenada2D(ancho,alto));
 		Coordenada2D dimensiones=new Coordenada2D(ancho,alto);
 		for(int i=0;i<dimensiones.getX();i++) {

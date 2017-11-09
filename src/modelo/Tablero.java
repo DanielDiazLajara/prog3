@@ -31,7 +31,7 @@ public abstract class Tablero {
 	 * Constructor por defecto que crea el tablero e inicializa sus celdas a MUERTA
 	 * @param dimensiones pasa las medidas del tablero
 	 */
-	protected Tablero(Coordenada dimensiones) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta{
+	protected Tablero(Coordenada dimensiones) throws ExcepcionArgumentosIncorrectos{
 		if(dimensiones==null)
 			throw new ExcepcionArgumentosIncorrectos();
 		this.dimensiones=dimensiones;
