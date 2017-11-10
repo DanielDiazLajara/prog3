@@ -23,7 +23,7 @@ public class TableroCeldasCuadradas extends Tablero2D{
 	 * @param alto del tablero a crear
 	 * @throws ExcepcionCoordenadaIncorrecta
 	 */
-	public TableroCeldasCuadradas(int ancho, int alto) throws ExcepcionCoordenadaIncorrecta {
+	public TableroCeldasCuadradas(int ancho, int alto) throws ExcepcionCoordenadaIncorrecta, ExcepcionEjecucion{
 		super(ancho,alto);
 	}
 	/**

@@ -17,14 +17,18 @@ public class Coordenada1D extends Coordenada{
 	 * EL atributo x denota la posición en fila de la coordenada
 	 */
 	private int x;
+	/**
+	 * Constructor de Coordenada1D
+	 * @param x fila de la nueva coordenada a crear.
+	 */
 	public Coordenada1D(int x) throws ExcepcionCoordenadaIncorrecta{
 		if(x<0)
 			throw new ExcepcionCoordenada1DIncorrecta(x);
 		this.x=new Integer(x);
 	}
 	/**
-	 * Constructor por defecto
-	 * @param x fila de la nueva coordenada a crear.
+	 * Constructor de Coordenada1D de copia
+	 * @param coord es la coordenada a copiar.
 	 */
 	public Coordenada1D(Coordenada1D coord) throws ExcepcionArgumentosIncorrectos{
 		if(coord==null)

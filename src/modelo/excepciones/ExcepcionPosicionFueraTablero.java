@@ -33,7 +33,7 @@ public class ExcepcionPosicionFueraTablero extends Exception{
 	/**
 	 * tostring de la clase, muestra el error
 	 */
-	public String getMessage() {return("La coordenada manipulada no se encuentra en el tablero\n");}	
+	public String getMessage() {return("La coordenada "+coordenada.toString()+" no se encuentra en el tablero"+dimensiones.toString());}	
 	/**
 	 * getter de dimensiones
 	 * @return dimensiones

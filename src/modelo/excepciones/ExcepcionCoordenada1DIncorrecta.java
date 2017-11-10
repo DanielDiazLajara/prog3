@@ -25,7 +25,7 @@ public class ExcepcionCoordenada1DIncorrecta extends ExcepcionCoordenadaIncorrec
 	/**
 	 * tostring de la clase muestra el error
 	 */
-	public String getMessage() {return("La coordenada ("+x+") es incorrecta\n");}
+	public String getMessage() {return("La coordenada ("+x+") es incorrecta");}
 	/**
 	 * getter de x
 	 * @return x

@@ -95,7 +95,7 @@ public class Coordenada2D extends Coordenada{
 	 * @param otra almacena la coordenada2D que queremos sumar.
 	 * @return coordenada2d resultado de la suma.
 	 */
-	public Coordenada suma(Coordenada otra) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta{
+	public Coordenada2D suma(Coordenada otra) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta{
 		
 		if(otra == null||!(otra instanceof Coordenada2D))
 			throw new ExcepcionArgumentosIncorrectos();
