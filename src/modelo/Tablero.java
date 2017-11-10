@@ -67,7 +67,7 @@ public abstract class Tablero {
 			return(estado);
 		}
 		else {
-			throw new ExcepcionPosicionFueraTablero(posicion,dimensiones);
+			throw new ExcepcionPosicionFueraTablero(dimensiones,posicion);
 		}
 	}
 	/**
@@ -83,7 +83,7 @@ public abstract class Tablero {
 			celdas.put(posicion,e);
 		}
 		else
-			throw new ExcepcionPosicionFueraTablero(posicion,dimensiones);
+			throw new ExcepcionPosicionFueraTablero(dimensiones,posicion);
 		}
 	/**
 	 * devuelve un array con las posiciones alrededor de una celda dada,

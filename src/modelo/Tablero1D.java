@@ -43,7 +43,7 @@ public class Tablero1D extends Tablero{
 	public ArrayList<Coordenada> getPosicionesVecinasCCW (Coordenada coord)throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos,ExcepcionEjecucion{
 		int x=new Integer(0);
 
-		if(coord==null||!(coord instanceof Coordenada2D))
+		if(coord==null||!(coord instanceof Coordenada1D))
 			throw new ExcepcionArgumentosIncorrectos();
 		Coordenada1D p=(Coordenada1D)coord;
 		ArrayList<Coordenada> lista =new ArrayList<Coordenada>();
@@ -79,8 +79,8 @@ public class Tablero1D extends Tablero{
 			if(coord2.getX()>x)
 				x=coord2.getX();
 		}
-		for(int i=0;i<(x+3);i++) {
-			if(i==0||i==x+2) {
+		for(int i=0;i<(x+2);i++) {
+			if(i==0||i==x+1) {
 				cadena.append("|");
 			}
 			else {
