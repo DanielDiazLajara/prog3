@@ -39,7 +39,6 @@ public class Tablero1D extends Tablero{
 	 * @param coord es la coordenada cuyas vecinas queremos hayar
 	 * @return lista con las coordenadas vecinas hayadas
 	 */
-	//OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 	public ArrayList<Coordenada> getPosicionesVecinasCCW (Coordenada coord)throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos,ExcepcionEjecucion{
 		int x=new Integer(0);
 
@@ -79,13 +78,13 @@ public class Tablero1D extends Tablero{
 			if(coord2.getX()>x)
 				x=coord2.getX();
 		}
-		for(int i=0;i<(x+2);i++) {
-			if(i==0||i==x+1) {
+		for(int i=0;i<(x+3);i++) {
+			if(i==0||i==x+2) {
 				cadena.append("|");
 			}
 			else {
 				try {
-					if(getCelda(new Coordenada1D(i))==estado_viva)
+					if(getCelda(new Coordenada1D(i-1))==estado_viva)
 						cadena.append("*");
 					else
 						cadena.append(" ");

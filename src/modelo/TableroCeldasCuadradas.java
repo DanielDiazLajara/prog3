@@ -87,7 +87,7 @@ public class TableroCeldasCuadradas extends Tablero2D{
 			}
 		}
 		else
-			throw new ExcepcionPosicionFueraTablero(p,dimensiones);
+			throw new ExcepcionPosicionFueraTablero(dimensiones,p);
 		return(lista);
 	}
 	

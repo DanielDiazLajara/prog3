@@ -108,7 +108,7 @@ public abstract class Tablero {
 			for(Coordenada coord : coords_patron) {
 			
 					if(result==true&&!coords_tablero.contains(coord.suma(coordinicial))) {
-						throw new ExcepcionPosicionFueraTablero(coord.suma(coordinicial),dimensiones);
+						throw new ExcepcionPosicionFueraTablero(dimensiones,coord.suma(coordinicial));
 					}
 			}
 			if(result) {
