@@ -3,6 +3,8 @@
  */
 package modelo;
 
+import com.sun.xml.internal.ws.api.pipe.ThrowableContainerPropertySet;
+
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenada2DIncorrecta;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
@@ -25,6 +27,7 @@ public class Coordenada2D extends Coordenada{
 	 * Constructor por defecto
 	 * @param x fila de la nueva coordenada a crear.
 	 * @param y columna de la nueva coordenada a crear.
+	 * @throws ExcepcionCoordenadaIncorrecta
 	 */
 	public Coordenada2D(int x,int y) throws ExcepcionCoordenadaIncorrecta{
 		if(x<0||y<0)
@@ -35,6 +38,7 @@ public class Coordenada2D extends Coordenada{
 	/**
 	 * Constructor de copia.
 	 * @param otra, Coordenada que queremos copiar.
+	 * @throws ExcepcionArgumentosIncorrectos
 	 */
 	public Coordenada2D(Coordenada2D otra) throws ExcepcionArgumentosIncorrectos{
 		if(otra==null)
@@ -94,6 +98,8 @@ public class Coordenada2D extends Coordenada{
 	 * Suma 2 coordenadas2D y devuelve otra resultado de dicha operación.
 	 * @param otra almacena la coordenada2D que queremos sumar.
 	 * @return coordenada2d resultado de la suma.
+	 * @throws ExcepcionArgumentosIncorrectos
+	 * @throws ExcepcionCoordenadaIncorrecta
 	 */
 	public Coordenada2D suma(Coordenada otra) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta{
 		

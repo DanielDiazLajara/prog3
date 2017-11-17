@@ -25,6 +25,7 @@ public class Patron {
 	 * Constructor de Patron
 	 * @param nombre pasa un nombre al patrón
 	 * @param tablero da un tablero al patrón
+	 * @throws ExcepcionArgumentosIncorrectos
 	 */
 	public Patron(String nombre,Tablero tablero) throws ExcepcionArgumentosIncorrectos{
 		if(nombre==null||tablero==null)
@@ -43,6 +44,8 @@ public class Patron {
 	 * Dada una coordenada del patrón devuelve el estado de la celda asignada
 	 * @param coord coordenada de la que queremos saber el estado
 	 * @return devuelve el estado de la celda con coordenada coord
+	 * @throws ExcepcionArgumentosIncorrectos
+	 * @throws ExcepcionPosicionFueraTablero
 	 */
 	public EstadoCelda getCelda(Coordenada coord) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos{
 		if(coord==null)
@@ -54,8 +57,7 @@ public class Patron {
 			return(estado);
 		}
 		else {
-			System.out.println("Error: La celda "+coord.toString()+" no exite");
-			return(null);
+			throw new ExcepcionPosicionFueraTablero(tablero.getDimensiones(),coord);
 		}
 	}
 	/**

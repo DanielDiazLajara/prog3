@@ -11,5 +11,13 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  * que se pueden usar en el juego
  */
 public abstract class Regla {
+/**
+ * 
+ * @param tab tablero que pasamos
+ * @param coord coordenada para la regla
+ * @return estado de la celda
+ * @throws ExcepcionPosicionFueraTablero
+ * @throws ExcepcionArgumentosIncorrectos
+ */
 	public abstract EstadoCelda calculaSiguienteEstadoCelda(Tablero tab, Coordenada coord) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos;
 }

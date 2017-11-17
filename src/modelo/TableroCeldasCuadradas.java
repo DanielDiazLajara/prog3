@@ -22,6 +22,7 @@ public class TableroCeldasCuadradas extends Tablero2D{
 	 * @param ancho del tablero a crear
 	 * @param alto del tablero a crear
 	 * @throws ExcepcionCoordenadaIncorrecta
+	 * @throws ExecepcionEjecucion
 	 */
 	public TableroCeldasCuadradas(int ancho, int alto) throws ExcepcionCoordenadaIncorrecta, ExcepcionEjecucion{
 		super(ancho,alto);
@@ -30,6 +31,9 @@ public class TableroCeldasCuadradas extends Tablero2D{
 	 * halla las coordenadas vecinas a una dada
 	 * @param coord coordenada cuyas vecinas queremos hallar
 	 * @return lista con las vecinas halladas
+	 * @throws ExcepcionPosicionFueraTablero
+	 * @throws ExcepcionEjecucion
+	 * @throws ExcepcionArgumentosIncorrectos
 	 */
 	public ArrayList<Coordenada> getPosicionesVecinasCCW (Coordenada coord)throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos,ExcepcionEjecucion{
 		int x=new Integer(0);

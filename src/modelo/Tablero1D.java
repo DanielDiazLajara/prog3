@@ -22,6 +22,8 @@ public class Tablero1D extends Tablero{
 	 * @param ancho del tablero
 	 * @throws ExcepcionArgumentosIncorrectos
 	 * @throws ExcepcionCoordenadaIncorrecta
+	 * @throws ExcepcionArgumentosIncorrectos
+	 * @throws ExcepcionCoordenadaIncorrecta
 	 */
 	public Tablero1D(int ancho) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta {
 		super(new Coordenada1D(ancho));
@@ -38,6 +40,9 @@ public class Tablero1D extends Tablero{
 	 * Devuelve las posiciones vecinas a una coordenada
 	 * @param coord es la coordenada cuyas vecinas queremos hayar
 	 * @return lista con las coordenadas vecinas hayadas
+	 * @throws ExcepcionPosicionFueraTablero
+	 * @throws ExcepcionArgumentosIncorrectos
+	 * @throws ExecepcionEjecucion
 	 */
 	public ArrayList<Coordenada> getPosicionesVecinasCCW (Coordenada coord)throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos,ExcepcionEjecucion{
 		int x=new Integer(0);
@@ -66,7 +71,7 @@ public class Tablero1D extends Tablero{
 		return(lista);
 	}
 	/**
-	 * to string del tablero de 1 sola dimensión
+	 * to string de tablero1d
 	 */
 	public String toString() throws ExcepcionEjecucion{
 		EstadoCelda estado_viva= EstadoCelda.VIVA;
