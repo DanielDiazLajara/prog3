@@ -24,8 +24,8 @@ public class ReglaConway extends Regla{
 	 * @param tab pasa el tablero en el que se encuentra la celda a calcular
 	 * @param coord pasa las coordenadas de la celda que queremos calcular
 	 * @return devuelve el EstadoCelda a asignar a la celda coord
-	 * @throws ExcepcionArgumentosIncorrectos
-	 * @throws ExcepcionPosicionFueraTablero
+	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos 
+	 * @throws ExcepcionPosicionFueraTablero excepción posición 
 	 */
 	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tab, Coordenada coord) throws ExcepcionPosicionFueraTablero,ExcepcionArgumentosIncorrectos{
 		if(coord==null||tab==null)

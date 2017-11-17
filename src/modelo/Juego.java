@@ -32,7 +32,7 @@ public class Juego {
 	 * Constructor del Juego
 	 * @param tab pasa un tablero para crear el juego
 	 * @param regla pasa una reglaConway para crear el juego
-	 * @throws ExcepcionArgumentosIncorrectos
+	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
 	 */
 	public Juego(Tablero tab, Regla regla) throws ExcepcionArgumentosIncorrectos{
 		if(tab==null||regla==null)
@@ -44,9 +44,9 @@ public class Juego {
 	 * Intenta cargar un patron en el tablero y si puede, lo añade a patronesusados
 	 * @param patron pasa un patrón para cargar sobre el tablero
 	 * @param coord indica la celda superior izquierda en la que se cargará el tablero
-	 * @throws ExcepcionArgumentosIncorrectos
-	 * @throws ExcepcionEjecucion
-	 * @throws ExcepcionPosicionFueraTablero
+	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
+	 * @throws ExcepcionEjecucion excepción ejecución
+	 * @throws ExcepcionPosicionFueraTablero excepción posición 
 	 */
 	public void cargaPatron(Patron patron,Coordenada coord) throws ExcepcionArgumentosIncorrectos,ExcepcionEjecucion,ExcepcionPosicionFueraTablero{
 		if(patron==null||coord==null)
@@ -57,7 +57,7 @@ public class Juego {
 	
 	/**
 	 * Actualiza todas las celdas del tablero siguiendo la regla de Conway
-	 * @throws ExcepcionEjecucion
+	 * @throws ExcepcionEjecucion excepción ejecución 
 	 */
 	public void actualiza() {
 		try {

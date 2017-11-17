@@ -22,8 +22,8 @@ public class Regla30 extends Regla{
 	 * @param tab tablero para aplicar la regla
 	 * @param coord coordenada sobre la que aplicamos la regla
 	 * @return estado de la celda tras aplicar la regla
-	 * @throws ExcepcionArgumentosIncorrectos
-	 * @throws ExcepcionPosicionFueraTablero
+	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
+	 * @throws ExcepcionPosicionFueraTablero excepción posición 
 	 */
 	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tab, Coordenada coord)
 			throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos {

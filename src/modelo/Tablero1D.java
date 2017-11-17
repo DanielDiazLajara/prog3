@@ -20,10 +20,8 @@ public class Tablero1D extends Tablero{
 	/**
 	 * Constructor de Tablero1D
 	 * @param ancho del tablero
-	 * @throws ExcepcionArgumentosIncorrectos
-	 * @throws ExcepcionCoordenadaIncorrecta
-	 * @throws ExcepcionArgumentosIncorrectos
-	 * @throws ExcepcionCoordenadaIncorrecta
+	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
+	 * @throws ExcepcionCoordenadaIncorrecta excepción coordenada
 	 */
 	public Tablero1D(int ancho) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta {
 		super(new Coordenada1D(ancho));
@@ -40,9 +38,9 @@ public class Tablero1D extends Tablero{
 	 * Devuelve las posiciones vecinas a una coordenada
 	 * @param coord es la coordenada cuyas vecinas queremos hayar
 	 * @return lista con las coordenadas vecinas hayadas
-	 * @throws ExcepcionPosicionFueraTablero
-	 * @throws ExcepcionArgumentosIncorrectos
-	 * @throws ExecepcionEjecucion
+	 * @throws ExcepcionPosicionFueraTablero excepción posición
+	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
+	 * @throws ExecepcionEjecucion excepción ejecución
 	 */
 	public ArrayList<Coordenada> getPosicionesVecinasCCW (Coordenada coord)throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos,ExcepcionEjecucion{
 		int x=new Integer(0);

@@ -20,7 +20,7 @@ public class Coordenada1D extends Coordenada{
 	/**
 	 * Constructor de Coordenada1D
 	 * @param x fila de la nueva coordenada a crear.
-	 * @throws ExcepcionCoordenadaIncorrecta
+	 * @throws ExcepcionCoordenadaIncorrecta excepción coordenada
 	 */
 	public Coordenada1D(int x) throws ExcepcionCoordenadaIncorrecta{
 		if(x<0)
@@ -30,7 +30,7 @@ public class Coordenada1D extends Coordenada{
 	/**
 	 * Constructor de Coordenada1D de copia
 	 * @param coord es la coordenada a copiar.
-	 * @throws ExcepcionArgumentosIncorrectos
+	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos 
 	 */
 	public Coordenada1D(Coordenada1D coord) throws ExcepcionArgumentosIncorrectos{
 		if(coord==null)
@@ -74,8 +74,8 @@ public class Coordenada1D extends Coordenada{
 	 * Suma 2 coordenadas1D y devuelve otra resultado de dicha operación.
 	 * @param otra almacena la coordenada1D que queremos sumar.
 	 * @return coordenada1D resultado de la suma.
-	 * @throws ExcepcionArgumentosIncorrectos
-	 * @throws ExcepcionCoordenadaIncorrecta
+	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos 
+	 * @throws ExcepcionCoordenadaIncorrecta excepción coordenada
 	 */
 	public Coordenada1D suma(Coordenada c) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta{
 		if(c == null||!(c instanceof Coordenada1D))

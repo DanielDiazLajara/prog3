@@ -30,7 +30,7 @@ public abstract class Tablero {
 	/**
 	 * Constructor por defecto que crea el tablero e inicializa sus celdas a MUERTA
 	 * @param dimensiones pasa las medidas del tablero
-	 * @throws ExcepcionArgumentosIncorrectos
+	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
 	 */
 	protected Tablero(Coordenada dimensiones) throws ExcepcionArgumentosIncorrectos{
 		if(dimensiones==null)
@@ -57,8 +57,8 @@ public abstract class Tablero {
 	 * getter del estado de una celda que se pasa por parámetros
 	 * @param posicion celda de la que queremos saber el estado
 	 * @return devuelve el estado de la celda posicion
-	 * @throws ExcepcionPosicionFueraTablero
-	 * @throws ExcepcionArgumentosIncorrectos
+	 * @throws ExcepcionPosicionFueraTablero excepción posición 
+	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
 	 */
 	public EstadoCelda getCelda(Coordenada posicion) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos{
 		if(posicion==null)
@@ -77,8 +77,8 @@ public abstract class Tablero {
 	 * Setter para cambiar el estado de una celda
 	 * @param posicion es la celda cuyo estado queremos cambiar
 	 * @param e es el nuevo estado que queremos para la celda
-	 * @throws ExcepcionArgumentosIncorrectos
-	 * @throws ExcepcionPosicionFueraTablero
+	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
+	 * @throws ExcepcionPosicionFueraTablero excepción posición
 	 */
 	public void setCelda(Coordenada posicion,EstadoCelda e) throws ExcepcionArgumentosIncorrectos,ExcepcionPosicionFueraTablero{
 		if(posicion==null||e==null)
@@ -95,9 +95,9 @@ public abstract class Tablero {
 	 * comenzando por la esquina superior izquierda y en sentido antihorario
 	 * @param p celda cuyas vecinas queremos conocer
 	 * @return devuelve un array con las celdas vecinas
-	 * @throws ExcepcionPosicionFueraTablero
-	 * @throws ExcepcionEjecucion
-	 * @throws ExcepcionArgumentosIncorrectos
+	 * @throws ExcepcionPosicionFueraTablero excepción posición
+	 * @throws ExcepcionEjecucion excepción ejecución 
+	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
 	 */
 	public abstract ArrayList<Coordenada> getPosicionesVecinasCCW (Coordenada p)throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos,ExcepcionEjecucion;
 	/**
@@ -105,9 +105,9 @@ public abstract class Tablero {
 	 * @param patron es el patron que quermos cargar en nuestro tablero
 	 * @param coordinicial celda sobre la que queremos comenzar la carga del tablero
 	 * @return devuelve true si se ppuede cargar y false si no
-	 * @throws ExcepcionArgumentosIncorrectos
-	 * @throws ExcepcionPosicionFueraTablero
-	 * @throws ExcepcionEjecucion
+	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
+	 * @throws ExcepcionPosicionFueraTablero excepción posición
+	 * @throws ExcepcionEjecucion excepción ejecución
 	 */
 	public void cargaPatron(Patron patron, Coordenada coordinicial) throws ExcepcionArgumentosIncorrectos,ExcepcionEjecucion,ExcepcionPosicionFueraTablero{
 		if(patron==null||coordinicial==null)
@@ -133,7 +133,7 @@ public abstract class Tablero {
 	 * Comprueba que las celdas estén en un tablero concreto
 	 * @param posicion es la celda que queremos comprobar
 	 * @return devuelve true si la celda se encuentra en el tablero y false si no
-	 * @throws ExcepcionArgumentosIncorrectos
+	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos 
 	 */
 	public boolean contiene(Coordenada posicion) throws ExcepcionArgumentosIncorrectos{
 		if(posicion==null)

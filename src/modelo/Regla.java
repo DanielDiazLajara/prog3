@@ -16,8 +16,8 @@ public abstract class Regla {
  * @param tab tablero que pasamos
  * @param coord coordenada para la regla
  * @return estado de la celda
- * @throws ExcepcionPosicionFueraTablero
- * @throws ExcepcionArgumentosIncorrectos
+ * @throws ExcepcionPosicionFueraTablero excepción posición
+ * @throws ExcepcionArgumentosIncorrectos excepción argumentos
  */
 	public abstract EstadoCelda calculaSiguienteEstadoCelda(Tablero tab, Coordenada coord) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos;
 }

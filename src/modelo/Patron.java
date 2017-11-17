@@ -25,7 +25,7 @@ public class Patron {
 	 * Constructor de Patron
 	 * @param nombre pasa un nombre al patrón
 	 * @param tablero da un tablero al patrón
-	 * @throws ExcepcionArgumentosIncorrectos
+	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
 	 */
 	public Patron(String nombre,Tablero tablero) throws ExcepcionArgumentosIncorrectos{
 		if(nombre==null||tablero==null)
@@ -44,8 +44,8 @@ public class Patron {
 	 * Dada una coordenada del patrón devuelve el estado de la celda asignada
 	 * @param coord coordenada de la que queremos saber el estado
 	 * @return devuelve el estado de la celda con coordenada coord
-	 * @throws ExcepcionArgumentosIncorrectos
-	 * @throws ExcepcionPosicionFueraTablero
+	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
+	 * @throws ExcepcionPosicionFueraTablero excepción posición 
 	 */
 	public EstadoCelda getCelda(Coordenada coord) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos{
 		if(coord==null)
