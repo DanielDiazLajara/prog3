@@ -2,7 +2,8 @@
  * @author Daniel Díaz Lajara 77634861V
  */
 package modelo.excepciones;
-
+/**warning suprimido
+ */
 @SuppressWarnings("serial")
 /**
  * Esta clase notificará
@@ -16,7 +17,7 @@ public class ExcepcionCoordenada1DIncorrecta extends ExcepcionCoordenadaIncorrec
 	private int x;
 	/**
 	 * constructor con una coordenada unidimensional
-	 * @param x
+	 * @param x parámetro x del error
 	 */
 	public ExcepcionCoordenada1DIncorrecta(int x) {
 		super();

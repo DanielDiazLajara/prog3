@@ -72,7 +72,7 @@ public class Coordenada1D extends Coordenada{
 	}
 	/**
 	 * Suma 2 coordenadas1D y devuelve otra resultado de dicha operación.
-	 * @param otra almacena la coordenada1D que queremos sumar.
+	 * @param c almacena la coordenada1D que queremos sumar.
 	 * @return coordenada1D resultado de la suma.
 	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos 
 	 * @throws ExcepcionCoordenadaIncorrecta excepción coordenada

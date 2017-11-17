@@ -36,7 +36,7 @@ public class Coordenada2D extends Coordenada{
 	}
 	/**
 	 * Constructor de copia.
-	 * @param otra, Coordenada que queremos copiar.
+	 * @param otra Coordenada que queremos copiar.
 	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
 	 */
 	public Coordenada2D(Coordenada2D otra) throws ExcepcionArgumentosIncorrectos{

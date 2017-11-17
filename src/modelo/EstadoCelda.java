@@ -8,5 +8,10 @@ package modelo;
  * VIVAS y MUERTAS
  */
 public enum EstadoCelda {
-	MUERTA,VIVA;
+	/**Muerta 
+	 */
+	MUERTA,
+	/**Viva
+	 */
+	VIVA;
 }

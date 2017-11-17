@@ -3,7 +3,8 @@
  */
 package modelo.excepciones;
 import modelo.Coordenada;
-
+/**warning suprimido
+ */
 @SuppressWarnings("serial")
 /**
  * Esta clase nos notificará

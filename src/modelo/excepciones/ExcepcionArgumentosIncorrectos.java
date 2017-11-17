@@ -2,7 +2,8 @@
  * @author Daniel Díaz Lajara 77634861V
  */
 package modelo.excepciones;
-
+/**warning suprimido
+ */
 @SuppressWarnings("serial")
 /**
  * Esta clase se usará

@@ -104,7 +104,6 @@ public abstract class Tablero {
 	 * Intenta cargar un patron a partir de una celda dada
 	 * @param patron es el patron que quermos cargar en nuestro tablero
 	 * @param coordinicial celda sobre la que queremos comenzar la carga del tablero
-	 * @return devuelve true si se ppuede cargar y false si no
 	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
 	 * @throws ExcepcionPosicionFueraTablero excepción posición
 	 * @throws ExcepcionEjecucion excepción ejecución

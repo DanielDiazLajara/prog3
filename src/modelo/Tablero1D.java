@@ -40,7 +40,7 @@ public class Tablero1D extends Tablero{
 	 * @return lista con las coordenadas vecinas hayadas
 	 * @throws ExcepcionPosicionFueraTablero excepción posición
 	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
-	 * @throws ExecepcionEjecucion excepción ejecución
+	 * @throws ExcepcionEjecucion excepción ejecución
 	 */
 	public ArrayList<Coordenada> getPosicionesVecinasCCW (Coordenada coord)throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos,ExcepcionEjecucion{
 		int x=new Integer(0);
@@ -70,6 +70,8 @@ public class Tablero1D extends Tablero{
 	}
 	/**
 	 * to string de tablero1d
+	 * @return string de tablero
+	 * @throws ExcepcionEjecucion
 	 */
 	public String toString() throws ExcepcionEjecucion{
 		EstadoCelda estado_viva= EstadoCelda.VIVA;
