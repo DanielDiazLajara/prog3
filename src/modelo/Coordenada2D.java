@@ -3,11 +3,9 @@
  */
 package modelo;
 
-
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenada2DIncorrecta;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
-
 /**
  * La clase Coordenada2D nos permite crear coordenadas
  * bidimensionales y realizar operaciones con ellas,

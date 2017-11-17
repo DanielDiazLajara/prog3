@@ -71,7 +71,7 @@ public class Tablero1D extends Tablero{
 	/**
 	 * to string de tablero1d
 	 * @return string de tablero
-	 * @throws ExcepcionEjecucion
+	 * @throws ExcepcionEjecucion excepción ejecución 
 	 */
 	public String toString() throws ExcepcionEjecucion{
 		EstadoCelda estado_viva= EstadoCelda.VIVA;
