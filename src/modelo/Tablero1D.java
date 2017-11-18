@@ -101,6 +101,39 @@ public class Tablero1D extends Tablero{
 		cadena.append("\n");
 		return cadena.toString();
 	}
+	/**
+	 * genera cadena de tablero1d
+	 * @return string de tablero
+	 * @throws ExcepcionEjecucion excepción ejecución 
+	 */
+	public String generaCadena() throws ExcepcionEjecucion{
+		EstadoCelda estado_viva= EstadoCelda.VIVA;
+		Collection<Coordenada> coords=getPosiciones();
+		StringBuilder cadena=new StringBuilder();
+		int x=new Integer(0);
+		for(Coordenada coord : coords) {
+			Coordenada1D coord2=(Coordenada1D)coord;
+			if(coord2.getX()>x)
+				x=coord2.getX();
+		}
+		for(int i=0;i<(x+3);i++) {
+			if(i==0||i==x+2) {
+				cadena.append("|");
+			}
+			else {
+				try {
+					if(getCelda(new Coordenada1D(i-1))==estado_viva)
+						cadena.append("*");
+					else
+						cadena.append(" ");
+				}catch (ExcepcionPosicionFueraTablero | ExcepcionCoordenadaIncorrecta e) {
+						throw new ExcepcionEjecucion(e);
+				}
+			}
+		}
+		cadena.append("\n");
+		return cadena.toString();
+	}
 		
 	
 }
