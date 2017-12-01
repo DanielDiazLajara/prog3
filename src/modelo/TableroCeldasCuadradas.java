@@ -15,7 +15,7 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  * nos permite crear tableros de 2 dimensiones
  * con las celdas cuadradas x*y
  */
-public class TableroCeldasCuadradas extends Tablero2D{
+public class TableroCeldasCuadradas extends Tablero2D implements Imprimible{
 
 	/**
 	 * Constructor del tablero

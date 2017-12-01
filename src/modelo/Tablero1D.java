@@ -16,7 +16,7 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  * tablero de una dimensión heredando de Tablero
  * Estos tableros solo tienen 1 fila
  */
-public class Tablero1D extends Tablero{
+public class Tablero1D extends Tablero implements Imprimible{
 	/**
 	 * Constructor de Tablero1D
 	 * @param ancho del tablero
