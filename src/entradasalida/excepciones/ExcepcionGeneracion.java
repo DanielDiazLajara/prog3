@@ -15,21 +15,21 @@ public class ExcepcionGeneracion extends Exception {
 	/**
 	 * Constructor de la clase por defecto
 	 */
-	ExcepcionGeneracion(){
+	public ExcepcionGeneracion(){
 		super();
 	}
 	/**
 	 * Constructor de la clase con un string
 	 * @param cadena string que pasamos
 	 */
-	ExcepcionGeneracion(String cadena){
+	public ExcepcionGeneracion(String cadena){
 		super(cadena);
 	}
 	/**
 	 * Constructor de la clase con otra excepción
 	 * @param t excepción que le pasamos
 	 */
-	ExcepcionGeneracion(Throwable t){
+	public ExcepcionGeneracion(Throwable t){
 		super(t);
 	}
 }
