@@ -1,6 +1,5 @@
 package mains;
-//PARA EJECUTAR LOS MAINS EN LA PRÁCTICA 4:
-//java -cp bin mains.Nombre main f.txt 
+
 import java.util.ArrayList;
 
 import modelo.Coordenada2D;
