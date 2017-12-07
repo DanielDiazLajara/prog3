@@ -39,18 +39,18 @@ public class ParserTablero2D implements IParserTablero{
 			throw new ExcepcionLectura("ERROR: La cadena pasada está vacía");		
 		int tam_fila=new Integer(0);
 		int tam_new_fila=new Integer(0);
-		int num_fila=new Integer(0);
+		int num_fila=new Integer(1);
 
 		for(int i=0;i<s.length();i++) {
 			if(s.charAt(i)!='\n'&&s.charAt(i)!='*'&&s.charAt(i)!=' ')
 				throw new ExcepcionLectura("ERROR: Carácteres introducidos erróneos"); 
-			if(s.charAt(i)=='\n'&&i!=(s.length()-1)) {
-				if(tam_fila!=tam_new_fila&&num_fila>0)
+			if(s.charAt(i)=='\n'&&i<(s.length()-1)) {
+				if(tam_fila!=tam_new_fila&&num_fila>1)
 					throw new ExcepcionLectura("ERROR: Tamaños de fila diferentes");
 				num_fila++;
 			}
 			else {
-				if(num_fila==0)
+				if(num_fila==1)
 					tam_fila++;
 				else 
 					tam_new_fila++;
@@ -59,20 +59,21 @@ public class ParserTablero2D implements IParserTablero{
 		TableroCeldasCuadradas tab;
 		try {
 			tab= new TableroCeldasCuadradas(tam_fila,num_fila);
-			int fila=new Integer(0);
-			int columna=new Integer(0);
-			for(int i=0;i<s.length();i++) {
-				if(s.charAt(i)=='\n') {
-					columna++;
-					fila=0;
-				}
-				else if(s.charAt(i)=='*') {
-					tab.setCelda(new Coordenada2D(fila,columna),EstadoCelda.VIVA);
-					fila++;
-				}
-				else if(s.charAt(i)==' ') {
-					tab.setCelda(new Coordenada2D(fila,columna),EstadoCelda.MUERTA);
-					fila++;
+			int num=new Integer(0);
+			for(int i=0;i<num_fila;i++) {
+				for(int j=0;j<tam_fila;j++) {
+					if(s.charAt(num)=='*') {
+						tab.setCelda(new Coordenada2D(j,i), EstadoCelda.VIVA);
+						num++;
+					}
+					else if(s.charAt(num)==' ') {
+						tab.setCelda(new Coordenada2D(j,i), EstadoCelda.MUERTA);
+						num++;
+					}
+					else {
+						num++;	
+						j--;
+					}
 				}
 			}
 		} catch (ExcepcionCoordenadaIncorrecta e) {
@@ -83,6 +84,4 @@ public class ParserTablero2D implements IParserTablero{
 		
 		return tab;
 	}
-	
-	
 }

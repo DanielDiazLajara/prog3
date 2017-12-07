@@ -1,7 +1,8 @@
 package entradasalida.textoplano;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 import entradasalida.IGeneradorFichero;
@@ -9,15 +10,13 @@ import entradasalida.excepciones.ExcepcionGeneracion;
 import modelo.Imprimible;
 import modelo.Juego;
 import modelo.Tablero;
-import modelo.Tablero1D;
-import modelo.TableroCeldasCuadradas;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 
 public class GeneradorFicheroPlano implements IGeneradorFichero{
 
 	public GeneradorFicheroPlano() {}
 	
-	public void generaFichero(File f, Juego j, int num) throws ExcepcionGeneracion, FileNotFoundException {
+	public void generaFichero(File f, Juego j, int num) throws ExcepcionGeneracion {
 		if(f==null||j==null)
 			throw new ExcepcionArgumentosIncorrectos();
 		if(num<=0)
@@ -27,21 +26,17 @@ public class GeneradorFicheroPlano implements IGeneradorFichero{
 			Tablero tablero=j.getTablero();
 			String cadena="";
 			if(tablero instanceof Imprimible) {
-				/*
-				if(tablero instanceof Tablero1D) {
-					cadena=((Tablero1D) tablero).generaCadena();
-				}
-				else if (tablero instanceof TableroCeldasCuadradas) {
-					cadena=((TableroCeldasCuadradas) tablero).generaCadena();
-				}*/
 				cadena=((Imprimible)tablero).generaCadena();
 			}
 			else
 				throw new ExcepcionGeneracion("ERROR: El tablero del juego no es imprimible");
 			PrintWriter pw;
-			pw=new PrintWriter(f);
+			try {
+				pw=new PrintWriter(new FileWriter(f,true));
+			} catch (IOException e) {
+				throw new ExcepcionGeneracion(e);
+			}
 			pw.println(cadena);
-			//CUIDADO
 			pw.close();
 		}
 	}

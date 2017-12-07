@@ -8,5 +8,5 @@ import modelo.Juego;
 
 public interface IGeneradorFichero {
 
-	public void generaFichero (File f,Juego j,int num) throws ExcepcionGeneracion, FileNotFoundException;
+	public void generaFichero (File f,Juego j,int num) throws ExcepcionGeneracion;
 }

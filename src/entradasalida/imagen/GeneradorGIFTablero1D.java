@@ -1,9 +1,6 @@
 package entradasalida.imagen;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-
 import entradasalida.IGeneradorFichero;
 import entradasalida.excepciones.ExcepcionGeneracion;
 import gifs.ImagenGIF;
@@ -40,15 +37,6 @@ public class GeneradorGIFTablero1D implements IGeneradorFichero{
 			}
 			j.actualiza();
 		}
-		PrintWriter pw;
-		try {
-			pw=new PrintWriter(f);
-		
-			pw.println(img);
-			//CUIDADO
-			pw.close();
-		} catch (FileNotFoundException e) {
-			throw new ExcepcionEjecucion(e);
-		}
+		img.guardaFichero(f);
 	}
 }

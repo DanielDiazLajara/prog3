@@ -116,25 +116,21 @@ public class Tablero1D extends Tablero implements Imprimible{
 			if(coord2.getX()>x)
 				x=coord2.getX();
 		}
-		for(int i=0;i<(x+3);i++) {
-			if(i==0||i==x+2) {
-				cadena.append("|");
-			}
-			else {
-				try {
-					if(getCelda(new Coordenada1D(i-1))==estado_viva)
-						cadena.append("*");
-					else
-						cadena.append(" ");
-				}catch (ExcepcionPosicionFueraTablero | ExcepcionCoordenadaIncorrecta e) {
-						throw new ExcepcionEjecucion(e);
-				}
+		Coordenada c=this.getDimensiones();
+		int y=new Integer(((Coordenada1D)c).getX());
+		cadena.append("|");
+		for(int i=0;i<y;i++) {
+			try {
+				if(getCelda(new Coordenada1D(i))==estado_viva)
+					cadena.append("*");
+				else
+					cadena.append(" ");
+			}catch (ExcepcionPosicionFueraTablero | ExcepcionCoordenadaIncorrecta e) {
+				throw new ExcepcionEjecucion(e);
 			}
 		}
-		cadena.append("\n");
+		cadena.append("|");
 		return cadena.toString();
-	}
-		
-	
+	}	
 }
 

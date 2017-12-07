@@ -22,12 +22,12 @@ public class Factory {
 	
 	public Factory() {}
 	
-	public IGeneradorFichero creaGeneradorFichero(Tablero tablero, String extension) throws ExcepcionGeneracion {
+	public static IGeneradorFichero creaGeneradorFichero(Tablero tablero, String extension) throws ExcepcionGeneracion {
 		if(tablero==null||extension==null)
 			throw new ExcepcionArgumentosIncorrectos();
-		if(extension=="txt")
+		if(extension.equals("txt"))
 			return(new GeneradorFicheroPlano());
-		else if(extension=="gif") {
+		else if(extension.equals("gif")) {
 			if(tablero instanceof Tablero1D)
 				return(new GeneradorGIFTablero1D());
 			else if(tablero instanceof Tablero2D)
@@ -38,7 +38,7 @@ public class Factory {
 		return(null);
 	}
 	
-	public Regla creaRegla(Tablero tab) {
+	public static Regla creaRegla(Tablero tab) {
 		if(tab==null)
 			throw new ExcepcionArgumentosIncorrectos();
 		if(tab instanceof Tablero1D)
@@ -49,7 +49,7 @@ public class Factory {
 			throw new ExcepcionEjecucion("ERROR: tablero introducido incorrecto.");
 	}
 	
-	public Tablero creaTablero(Coordenada coord) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta {
+	public static Tablero creaTablero(Coordenada coord) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta {
 		if(coord==null)
 			throw new ExcepcionArgumentosIncorrectos();
 		if(coord instanceof Coordenada1D) {
