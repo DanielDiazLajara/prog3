@@ -7,7 +7,7 @@ import entradasalida.IParserTablero;
 import entradasalida.excepciones.ExcepcionLectura;
 import modelo.Coordenada2D;
 import modelo.EstadoCelda;
-import modelo.Tablero2D;
+import modelo.Tablero;
 import modelo.TableroCeldasCuadradas;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
@@ -32,7 +32,7 @@ public class ParserTablero2D implements IParserTablero{
 	 * @throws ExcepcionArgumentosIncorrectos
 	 */
 	@Override
-	public Tablero2D leeTablero(String s) throws ExcepcionEjecucion, ExcepcionLectura, ExcepcionArgumentosIncorrectos{
+	public Tablero leeTablero(String s) throws ExcepcionEjecucion, ExcepcionLectura, ExcepcionArgumentosIncorrectos{
 		if(s==null)
 			throw new ExcepcionArgumentosIncorrectos();
 		if(s=="")
@@ -45,17 +45,21 @@ public class ParserTablero2D implements IParserTablero{
 			if(s.charAt(i)!='\n'&&s.charAt(i)!='*'&&s.charAt(i)!=' ')
 				throw new ExcepcionLectura("ERROR: Carácteres introducidos erróneos"); 
 			if(s.charAt(i)=='\n'&&i<(s.length()-1)) {
-				if(tam_fila!=tam_new_fila&&num_fila>1)
+				if(tam_fila!=tam_new_fila&&num_fila>1) {
 					throw new ExcepcionLectura("ERROR: Tamaños de fila diferentes");
+				}
 				num_fila++;
+				tam_new_fila=0;
 			}
 			else {
-				if(num_fila==1)
+				if(num_fila==1&&s.charAt(i)!='\n')
 					tam_fila++;
-				else 
+				else if(s.charAt(i)!='\n')
 					tam_new_fila++;
 			}	
 		}
+		if(tam_fila!=tam_new_fila)
+			throw new ExcepcionLectura("ERROR: Tamaños de fila diferentes");
 		TableroCeldasCuadradas tab;
 		try {
 			tab= new TableroCeldasCuadradas(tam_fila,num_fila);

@@ -17,7 +17,7 @@ public class ParserTableros {
 			throw new ExcepcionArgumentosIncorrectos();
 		int contador =new Integer(0);
 		for(int i=0;i<s.length();i++)
-			if(s.charAt(i)=='\n'&&(i+1)<s.length())
+			if(s.charAt(i)=='\n')
 				contador++;
 		if(contador==0) {
 			ParserTablero1D t=new ParserTablero1D();

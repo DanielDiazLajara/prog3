@@ -7,6 +7,7 @@ import entradasalida.IParserTablero;
 import entradasalida.excepciones.ExcepcionLectura;
 import modelo.Coordenada1D;
 import modelo.EstadoCelda;
+import modelo.Tablero;
 import modelo.Tablero1D;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
@@ -29,12 +30,12 @@ public class ParserTablero1D implements IParserTablero{
 	 * @throws ExcepcionEjecucion
 	 * @throws ExcepcionArgumentosIncorrectos
 	 */
-	public Tablero1D leeTablero (String s) throws ExcepcionEjecucion,ExcepcionLectura,ExcepcionArgumentosIncorrectos{
+	public Tablero leeTablero (String s) throws ExcepcionEjecucion,ExcepcionLectura,ExcepcionArgumentosIncorrectos{
 		Tablero1D t1;
 		if(s==null)
 			throw new ExcepcionArgumentosIncorrectos();
 		if(s=="")
-			throw new ExcepcionArgumentosIncorrectos();
+			throw new ExcepcionLectura("ERROR: Cadena introducida vacia.");
 		try {
 			t1 = new Tablero1D(s.length());
 		} catch (ExcepcionCoordenadaIncorrecta e1) {
@@ -56,7 +57,7 @@ public class ParserTablero1D implements IParserTablero{
 					throw new ExcepcionEjecucion("ERROR de programación de ParserTablero1D");
 				}
 			else
-				throw new ExcepcionLectura("Cadena intrducida errónea");
+				throw new ExcepcionLectura("ERROR: Cadena intrducida errónea");
 		}
 		return(t1);
 	}

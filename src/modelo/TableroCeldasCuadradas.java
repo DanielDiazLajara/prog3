@@ -183,7 +183,6 @@ public class TableroCeldasCuadradas extends Tablero2D implements Imprimible{
 			}
 
 		}
-		cadena.append("\n");
 		return cadena.toString();
 	}
 }
