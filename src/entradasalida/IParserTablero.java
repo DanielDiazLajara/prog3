@@ -8,7 +8,6 @@ import modelo.Tablero;
 import modelo.excepciones.ExcepcionEjecucion;
 /**
  * Interfaz que usaremos para leer tableros
- * 
  */
 public interface IParserTablero {
 	/**

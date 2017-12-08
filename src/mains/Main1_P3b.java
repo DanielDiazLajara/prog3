@@ -12,7 +12,7 @@ public class Main1_P3b {
 
 	/**
 	 * Clase principal de la P1
-	 * @param args
+	 * @param args argumentos pasados
 	 * @throws ExcepcionCoordenada2DIncorrecta 
 	 */
 	public static void main(String[] args)  {

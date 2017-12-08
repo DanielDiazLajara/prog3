@@ -1,11 +1,13 @@
 package mains;
 import modelo.*;
 import modelo.excepciones.*;
-
+/**
+ * main de prueba
+ */
 public class MainCompilacionP3 {
 
 	/**
-	 * @param args
+	 * @param args argumentos
 	 * @throws ExcepcionCoordenadaIncorrecta 
 	 */
 	public static void main(String[] args) throws ExcepcionCoordenadaIncorrecta {

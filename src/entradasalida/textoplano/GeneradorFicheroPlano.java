@@ -1,3 +1,6 @@
+/**
+ * Daniel Díaz Lajara 77634861V
+ */
 package entradasalida.textoplano;
 
 import java.io.File;
@@ -11,11 +14,23 @@ import modelo.Imprimible;
 import modelo.Juego;
 import modelo.Tablero;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
-
+/**
+ * Genera un fichero txt donde
+ * se escriben las iteraciones
+ * de un juego concreto
+ */
 public class GeneradorFicheroPlano implements IGeneradorFichero{
-
+	/**
+	 * Constructor
+	 */
 	public GeneradorFicheroPlano() {}
-	
+	/**
+	 * Sirve para generar el fichero txt dicho
+	 * @param f archivo donde escribimos
+	 * @param j juego a iterar
+	 * @param num numero de iteraciones a hacer
+	 * @throws ExcepcionGeneracion si no podemos escribir
+	 */
 	public void generaFichero(File f, Juego j, int num) throws ExcepcionGeneracion {
 		if(f==null||j==null)
 			throw new ExcepcionArgumentosIncorrectos();

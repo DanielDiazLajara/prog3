@@ -10,8 +10,14 @@ import modelo.Juego;
 import modelo.Patron;
 import modelo.Regla30;
 import modelo.Tablero1D;
-
+/**
+ *main
+ */
 public class Main4_1D {
+	/**
+	 * prueba
+	 * @param args argumentos
+	 */
 	public static void main(String[] args) {
 		if (args.length != 1) {
 			System.err.println("Falta el nombre del fichero de salida");			

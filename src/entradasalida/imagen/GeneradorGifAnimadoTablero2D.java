@@ -1,3 +1,6 @@
+/**
+ * @author Daniel Díaz Lajara 77634861V
+ */
 package entradasalida.imagen;
 
 import java.io.File;
@@ -15,11 +18,23 @@ import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
-
+/**
+ * Esta clase nos ayudará
+ * con la generación de gifs
+ * para tableros 2D
+ */
 public class GeneradorGifAnimadoTablero2D implements IGeneradorFichero{
-	
+	/**
+	 * Constructor
+	 */
 	public GeneradorGifAnimadoTablero2D() {}
-	
+	/**
+	 * Este procedimiento genera el fichero GIF deseado
+	 * @param f es el archivo donde queremos guardar el gif
+	 * @param j es el juego que queremos guadar
+	 * @param num es el numnero de iteraciones del juego a grabar
+	 * @throws ExcepcionGeneracion cuando hay fallos 
+	 */
 	public void generaFichero(File f, Juego j, int num) throws ExcepcionGeneracion {
 		if(f==null|j==null)
 			throw new ExcepcionArgumentosIncorrectos();

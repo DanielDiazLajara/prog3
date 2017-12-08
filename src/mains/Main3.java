@@ -6,14 +6,16 @@ import modelo.Juego;
 import modelo.Patron;
 import modelo.Regla30;
 import modelo.Tablero1D;
-
+/**
+ * main de la práctica de prueba
+ */
 public class Main3 {
 
 	/**
-	 * @param args
-	 * @throws ExcepcionJuegoVida 
-	 * @throws ExcepcionExportacion 
-	 * @throws ExcepcionLectura 
+	 * @param args argumentos
+	 * @throws ExcepcionJuegoVida  excepcion
+	 * @throws ExcepcionExportacion excepcion
+	 * @throws ExcepcionLectura excepcion
 	 */
 	public static void main(String[] args)  {
 		try {

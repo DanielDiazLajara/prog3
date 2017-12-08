@@ -1,3 +1,6 @@
+/**
+ * Daniel Díaz Lajara 77634861V
+ */
 package entradasalida.imagen;
 
 import java.io.File;
@@ -12,11 +15,23 @@ import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
-
+/**
+ * Esta clase grabará en ficheros txt
+ * las iteraciones de un juego en concreto
+ * sea dicho juego 1D o 2D
+ */
 public class GeneradorGIFTablero1D implements IGeneradorFichero{
-	
+	/**
+	 * Constructor
+	 */
 	public GeneradorGIFTablero1D() {}
-	
+	/**
+	 * Esta función es la que grabará en el fichero el contenido deseado
+	 * @param f es el fichero donde guardar el juego
+	 * @param j es el juego a iterar y guardar
+	 * @param num es el numero de veces a iterar el juego en cuestión
+	 * @throws ExcepcionGeneracion cuando no pueda grabarse o iterarse bien
+	 */
 	public void generaFichero(File f, Juego j, int num) throws ExcepcionGeneracion {
 		if (f==null||j==null)
 			throw new ExcepcionArgumentosIncorrectos();

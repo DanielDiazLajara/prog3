@@ -16,7 +16,10 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
 @author drizo
  **/
 public class Main2_P3b {
-
+	/**
+	 * void principal
+	 * @param args argumentos
+	 */
 	public static void main(String[] args) {
 		// creamos un patrón
 		TableroCeldasCuadradas tableroPatron = null;

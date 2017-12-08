@@ -27,8 +27,9 @@ public class ParserTablero1D implements IParserTablero{
 	 * método para convertir tablero 1d
 	 * @param s string a convertir
 	 * @return tablero convertido
-	 * @throws ExcepcionEjecucion
-	 * @throws ExcepcionArgumentosIncorrectos
+	 * @throws ExcepcionEjecucion con errores de programación
+	 * @throws ExcepcionArgumentosIncorrectos con argumentos null
+	 * @throws ExcepcionLectura si la cadena es incorrecta
 	 */
 	public Tablero leeTablero (String s) throws ExcepcionEjecucion,ExcepcionLectura,ExcepcionArgumentosIncorrectos{
 		Tablero1D t1;

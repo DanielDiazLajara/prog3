@@ -18,7 +18,10 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
 @author drizo
  **/
 public class Main4_2D {
-
+	/**
+	 * prueba 2
+	 * @param args argumentos
+	 */
 	public static void main(String[] args) {
 		if (args.length != 1) {
 			System.err.println("Falta el nombre del fichero de salida");			

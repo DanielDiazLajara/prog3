@@ -16,8 +16,23 @@ import entradasalida.IGeneradorFichero;
 import entradasalida.ParserTableros;
 import entradasalida.excepciones.ExcepcionGeneracion;
 import entradasalida.excepciones.ExcepcionLectura;
-
+/**
+ * 
+ * main 4
+ */
 public class Main4 {
+	/**
+	 * prueba
+	 * @param dimensiones dim
+	 * @param posicionCargaPatron pos
+	 * @param cadena cad
+	 * @param fichero f
+	 * @param iteraciones i
+	 * @throws ExcepcionPosicionFueraTablero exc
+	 * @throws ExcepcionGeneracion exc
+	 * @throws ExcepcionCoordenadaIncorrecta exc
+	 * @throws ExcepcionLectura exc
+	 */
 	void run(Coordenada dimensiones, Coordenada posicionCargaPatron, String cadena, String fichero, int iteraciones) throws ExcepcionPosicionFueraTablero, ExcepcionGeneracion, ExcepcionCoordenadaIncorrecta, ExcepcionLectura {
 		Tablero tablero = Factory.creaTablero(dimensiones);
 		Regla regla = Factory.creaRegla(tablero);		
@@ -29,7 +44,10 @@ public class Main4 {
 		IGeneradorFichero generador = Factory.creaGeneradorFichero(tablero, FileUtils.getFileExtension(fichero));
 		generador.generaFichero(new File(fichero), juego, iteraciones);		
 	}
-	
+	/**
+	 * main 
+	 * @param args argumentos
+	 */
 	public static void main(String [] args) {
 		Main4 objeto = new Main4();
 		try {			

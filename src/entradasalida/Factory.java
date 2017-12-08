@@ -1,3 +1,6 @@
+/**
+ * Daniel Díaz Lajara 77634861V
+ */
 package entradasalida;
 
 import entradasalida.excepciones.ExcepcionGeneracion;
@@ -17,11 +20,23 @@ import modelo.TableroCeldasCuadradas;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
-
+/**
+ * Esta clase nos facilita la creación
+ * de reglas, generadores y tableros, 
+ * en función de nuestras necesidades
+ */
 public class Factory {
-	
+	/**
+	 * Constructor
+	 */
 	public Factory() {}
-	
+	/**
+	 * Crea un generador 2D o 1D según el tablero y la extension
+	 * @param tablero tablero del que depende el generador
+	 * @param extension extension del archivo a crear
+	 * @return el generador deseado
+	 * @throws ExcepcionGeneracion si no se puede crear el generador
+	 */
 	public static IGeneradorFichero creaGeneradorFichero(Tablero tablero, String extension) throws ExcepcionGeneracion {
 		if(tablero==null||extension==null)
 			throw new ExcepcionArgumentosIncorrectos();
@@ -37,7 +52,11 @@ public class Factory {
 			throw new ExcepcionGeneracion("ERROR: extensión de archivo incorrecta");
 		return(null);
 	}
-	
+	/**
+	 * Crea una reglaConway o Regla30 según el tablero pasado
+	 * @param tab tablero que ppasamos
+	 * @return la regla que proceda
+	 */
 	public static Regla creaRegla(Tablero tab) {
 		if(tab==null)
 			throw new ExcepcionArgumentosIncorrectos();
@@ -48,7 +67,13 @@ public class Factory {
 		else
 			throw new ExcepcionEjecucion("ERROR: tablero introducido incorrecto.");
 	}
-	
+	/**
+	 * Crea un tableroCeldasCuadradas o Tablero1D según coordenada
+	 * @param coord de la que depende el tablero creado
+	 * @return tablero creado
+	 * @throws ExcepcionArgumentosIncorrectos si parámetros pasados son null
+	 * @throws ExcepcionCoordenadaIncorrecta si la coordenada de creación no es válida
+	 */
 	public static Tablero creaTablero(Coordenada coord) throws ExcepcionArgumentosIncorrectos, ExcepcionCoordenadaIncorrecta {
 		if(coord==null)
 			throw new ExcepcionArgumentosIncorrectos();
