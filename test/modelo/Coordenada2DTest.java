@@ -26,7 +26,7 @@ Coordenada2D c;
 
 	@Test
 	public final void testGetters() {
-		assertEquals("x", 3, c.getX());//
+		assertEquals("x", 3, c.getX());
 		assertEquals("y", 5, c.getY());
 		
 	}

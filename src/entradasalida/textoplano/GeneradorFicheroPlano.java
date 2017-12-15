@@ -36,23 +36,27 @@ public class GeneradorFicheroPlano implements IGeneradorFichero{
 			throw new ExcepcionArgumentosIncorrectos();
 		if(num<=0)
 			throw new ExcepcionGeneracion("ERROR: num iteraciones incorrecto");
+		StringBuilder s=new StringBuilder("");
 		for(int i=0;i<num;i++) {
 			j.actualiza();
 			Tablero tablero=j.getTablero();
 			String cadena="";
 			if(tablero instanceof Imprimible) {
 				cadena=((Imprimible)tablero).generaCadena();
+				s.append(cadena);
+				s.append("\n");
 			}
 			else
 				throw new ExcepcionGeneracion("ERROR: El tablero del juego no es imprimible");
+		}
 			PrintWriter pw;
 			try {
-				pw=new PrintWriter(new FileWriter(f,true));
+				pw=new PrintWriter(new FileWriter(f));
+				pw.print(s.toString());
+				pw.close();
 			} catch (IOException e) {
 				throw new ExcepcionGeneracion(e);
-			}
-			pw.println(cadena);
-			pw.close();
+
 		}
 	}
 }
