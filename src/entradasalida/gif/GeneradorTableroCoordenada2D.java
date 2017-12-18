@@ -1,7 +1,7 @@
 /**
  * @author Daniel Díaz Lajara 77634861V
  */
-package entradasalida.imagen;
+package entradasalida.gif;
 
 import java.io.File;
 
@@ -10,10 +10,10 @@ import entradasalida.excepciones.ExcepcionGeneracion;
 import gifs.ImagenGIF;
 import gifs.ImagenGIFAnimado;
 import modelo.Coordenada;
-import modelo.Coordenada2D;
 import modelo.EstadoCelda;
 import modelo.Juego;
 import modelo.Tablero;
+import modelo.d2.Coordenada2D;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
@@ -23,11 +23,11 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  * con la generación de gifs
  * para tableros 2D
  */
-public class GeneradorGifAnimadoTablero2D implements IGeneradorFichero{
+public class GeneradorTableroCoordenada2D implements IGeneradorFichero{
 	/**
 	 * Constructor
 	 */
-	public GeneradorGifAnimadoTablero2D() {}
+	public GeneradorTableroCoordenada2D() {}
 	/**
 	 * Este procedimiento genera el fichero GIF deseado
 	 * @param f es el archivo donde queremos guardar el gif

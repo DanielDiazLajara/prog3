@@ -8,7 +8,12 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import modelo.excepciones.ExcepcionCoordenada1DIncorrecta;
+import modelo.d1.Coordenada1D;
+import modelo.d1.ExcepcionCoordenada1DIncorrecta;
+import modelo.d1.Regla30;
+import modelo.d1.Tablero1D;
+import modelo.d2.Coordenada2D;
+import modelo.d2.TableroCeldasCuadradas;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 import org.junit.Before;
@@ -155,7 +160,7 @@ public class Juego1DP3Test {
 			for (int i=0; i<43; i++) {
 				try {
 					c = new Coordenada2D(i,j);
-					assertEquals("Estado ("+i+","+j+")",tablerodelmain.getCelda(c),tab2.getCelda(c));
+					assertEquals("Estado ("+i+","+j+")",tablerodelmain.getCelda(c),tab2.getCelda((Coordenada2D) c));
 				} catch (Exception e) {
 					fail("No se esperaba excepcion, pero se capturo "+e.getClass().getSimpleName());
 				}	
@@ -205,7 +210,7 @@ public class Juego1DP3Test {
 			for (int i=0; i<60; i++) { //índice tabla
 				try {
 					c = new Coordenada2D(i,j);
-					assertEquals("Estado ("+i+","+j+")",tablerosos.getCelda(c),tab2.getCelda(c));
+					assertEquals("Estado ("+i+","+j+")",tablerosos.getCelda(c),tab2.getCelda((Coordenada2D) c));
 				} catch (Exception e) {
 					fail("No se esperaba excepcion, pero se capturo "+e.getClass().getSimpleName());
 				}	
@@ -250,7 +255,7 @@ public class Juego1DP3Test {
 		for (int j=0; j<40; j++)
 			for (int i=0; i<60; i++) {
 				c = new Coordenada2D(i,j);
-				assertEquals("Estado ("+i+","+j+")",tableroconmaspatrones.getCelda(c),tab2.getCelda(c));
+				assertEquals("Estado ("+i+","+j+")",tableroconmaspatrones.getCelda(c),tab2.getCelda((Coordenada2D) c));
 			}
 		} catch (Exception e) {
 			fail("No se esperaba excepcion, pero se capturo "+e.getClass().getSimpleName());
@@ -293,7 +298,7 @@ public class Juego1DP3Test {
 			for (int j=0; j<2; j++)
 				for (int i=0; i<12; i++) {
 					c = new Coordenada2D(i,j);
-					assertEquals("Estado ("+i+","+j+")",tabsol.getCelda(c),tab2.getCelda(c));
+					assertEquals("Estado ("+i+","+j+")",tabsol.getCelda((Coordenada2D) c),tab2.getCelda((Coordenada2D) c));
 				}
 			} catch (Exception e) {
 				fail("No se esperaba excepcion, pero se capturo "+e.getClass().getSimpleName());

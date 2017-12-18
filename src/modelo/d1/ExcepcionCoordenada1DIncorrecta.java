@@ -1,7 +1,10 @@
 /**
  * @author Daniel Díaz Lajara 77634861V
  */
-package modelo.excepciones;
+package modelo.d1;
+
+import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
+
 /**warning suprimido
  */
 @SuppressWarnings("serial")

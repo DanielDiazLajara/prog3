@@ -1,10 +1,10 @@
 /**
  * @author Daniel Díaz Lajara 77634861V
  */
-package modelo;
+package modelo.d1;
 
+import modelo.Coordenada;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
-import modelo.excepciones.ExcepcionCoordenada1DIncorrecta;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 
 /**

@@ -1,11 +1,14 @@
 /**
  * @author Daniel Díaz Lajara 77634861V
  */
-package modelo;
+package modelo.d1;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
+import modelo.EstadoCelda;
+import modelo.Imprimible;
+import modelo.Tablero;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
@@ -16,7 +19,7 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  * tablero de una dimensión heredando de Tablero
  * Estos tableros solo tienen 1 fila
  */
-public class Tablero1D extends Tablero implements Imprimible{
+public class Tablero1D extends Tablero<Coordenada1D> implements Imprimible{
 	/**
 	 * Constructor de Tablero1D
 	 * @param ancho del tablero
@@ -42,14 +45,14 @@ public class Tablero1D extends Tablero implements Imprimible{
 	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
 	 * @throws ExcepcionEjecucion excepción ejecución
 	 */
-	public ArrayList<Coordenada> getPosicionesVecinasCCW (Coordenada coord)throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos,ExcepcionEjecucion{
+	public ArrayList<Coordenada1D> getPosicionesVecinasCCW (Coordenada1D coord)throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos,ExcepcionEjecucion{
 		int x=new Integer(0);
 
 		if(coord==null||!(coord instanceof Coordenada1D))
 			throw new ExcepcionArgumentosIncorrectos();
 		Coordenada1D p=(Coordenada1D)coord;
-		ArrayList<Coordenada> lista =new ArrayList<Coordenada>();
-		Collection<Coordenada> coordenadas=this.getPosiciones();
+		ArrayList<Coordenada1D> lista =new ArrayList<Coordenada1D>();
+		Collection<Coordenada1D> coordenadas=this.getPosiciones();
 		if (contiene(p)) {
 			try {
 				x=p.getX()-1;
@@ -75,10 +78,10 @@ public class Tablero1D extends Tablero implements Imprimible{
 	 */
 	public String toString() throws ExcepcionEjecucion{
 		EstadoCelda estado_viva= EstadoCelda.VIVA;
-		Collection<Coordenada> coords=getPosiciones();
+		Collection<Coordenada1D> coords=getPosiciones();
 		StringBuilder cadena=new StringBuilder();
 		int x=new Integer(0);
-		for(Coordenada coord : coords) {
+		for(Coordenada1D coord : coords) {
 			Coordenada1D coord2=(Coordenada1D)coord;
 			if(coord2.getX()>x)
 				x=coord2.getX();
@@ -108,15 +111,15 @@ public class Tablero1D extends Tablero implements Imprimible{
 	 */
 	public String generaCadena() throws ExcepcionEjecucion{
 		EstadoCelda estado_viva= EstadoCelda.VIVA;
-		Collection<Coordenada> coords=getPosiciones();
+		Collection<Coordenada1D> coords=getPosiciones();
 		StringBuilder cadena=new StringBuilder();
 		int x=new Integer(0);
-		for(Coordenada coord : coords) {
+		for(Coordenada1D coord : coords) {
 			Coordenada1D coord2=(Coordenada1D)coord;
 			if(coord2.getX()>x)
 				x=coord2.getX();
 		}
-		Coordenada c=this.getDimensiones();
+		Coordenada1D c=this.getDimensiones();
 		int y=new Integer(((Coordenada1D)c).getX());
 		cadena.append("|");
 		for(int i=0;i<y;i++) {

@@ -6,6 +6,10 @@ package modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import modelo.d1.Coordenada1D;
+import modelo.d1.Tablero1D;
+import modelo.d2.Coordenada2D;
+import modelo.d2.TableroCeldasCuadradas;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
@@ -14,27 +18,28 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  * La clase juego relaciona un tablero con varios patrones
  * y con una serie de reglas para llevar a cabo el juego
  * de la vida de Conway 
+ * @param <TipoCoordenada> tipo coordenada que pasamos
  */
-public class Juego {
+public class Juego<TipoCoordenada extends Coordenada> {
 	/**
 	 * El atributo reglaconway establece la regla que sigue el juego
 	 */
-	private Regla regla;
+	private Regla<TipoCoordenada> regla;
 	/**
 	 * El tablero es sobre el que se aplica dicha regla
 	 */
-	private Tablero tablero;
+	private Tablero<TipoCoordenada> tablero;
 	/**
 	 * El atributo patrones usados almacena los patrones cargados sobre el tablero
 	 */
-	private ArrayList<Patron> patronesUsados=new ArrayList<Patron>();
+	private ArrayList<Patron<TipoCoordenada>> patronesUsados=new ArrayList<Patron<TipoCoordenada>>();
 	/**
 	 * Constructor del Juego
 	 * @param tab pasa un tablero para crear el juego
 	 * @param regla pasa una reglaConway para crear el juego
 	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
 	 */
-	public Juego(Tablero tab, Regla regla) throws ExcepcionArgumentosIncorrectos{
+	public Juego(Tablero<TipoCoordenada> tab, Regla<TipoCoordenada> regla) throws ExcepcionArgumentosIncorrectos{
 		if(tab==null||regla==null)
 			throw new ExcepcionArgumentosIncorrectos();
 		tablero=tab;
@@ -48,7 +53,7 @@ public class Juego {
 	 * @throws ExcepcionEjecucion excepción ejecución
 	 * @throws ExcepcionPosicionFueraTablero excepción posición 
 	 */
-	public void cargaPatron(Patron patron,Coordenada coord) throws ExcepcionArgumentosIncorrectos,ExcepcionEjecucion,ExcepcionPosicionFueraTablero{
+	public void cargaPatron(Patron<TipoCoordenada> patron,TipoCoordenada coord) throws ExcepcionArgumentosIncorrectos,ExcepcionEjecucion,ExcepcionPosicionFueraTablero{
 		if(patron==null||coord==null)
 			throw new ExcepcionArgumentosIncorrectos();
 		tablero.cargaPatron(patron,coord);
@@ -64,23 +69,23 @@ public class Juego {
 			if(tablero instanceof TableroCeldasCuadradas) {
 				Coordenada2D coord=new Coordenada2D((Coordenada2D)tablero.getDimensiones());
 				TableroCeldasCuadradas tab= new TableroCeldasCuadradas(coord.getX(),coord.getY());
-				Collection<Coordenada> coordenadas=tablero.getPosiciones();
+				Collection<TipoCoordenada> coordenadas=tablero.getPosiciones();
 			
-				for(Coordenada coord2:coordenadas) {
-					tab.setCelda(coord2, regla.calculaSiguienteEstadoCelda(tablero, coord2));
+				for(TipoCoordenada coord2:coordenadas) {
+					tab.setCelda((Coordenada2D)coord2, regla.calculaSiguienteEstadoCelda(tablero, coord2));
 				}
-				for(Coordenada coord2: coordenadas)
-					tablero.setCelda(coord2, tab.getCelda(coord2));
+				for(TipoCoordenada coord2: coordenadas)
+					tablero.setCelda(coord2, tab.getCelda((Coordenada2D)coord2));
 			}else if(tablero instanceof Tablero1D) {
 				Coordenada1D coord=new Coordenada1D((Coordenada1D)tablero.getDimensiones());
 				Tablero1D tab= new Tablero1D(coord.getX());
-				Collection<Coordenada> coordenadas=tablero.getPosiciones();
+				Collection<TipoCoordenada> coordenadas=tablero.getPosiciones();
 			
-				for(Coordenada coord2:coordenadas) {
-					tab.setCelda(coord2, regla.calculaSiguienteEstadoCelda(tablero, coord2));
+				for(TipoCoordenada coord2:coordenadas) {
+					tab.setCelda((Coordenada1D)coord2, regla.calculaSiguienteEstadoCelda(tablero, coord2));
 				}
-				for(Coordenada coord2: coordenadas)
-					tablero.setCelda(coord2, tab.getCelda(coord2));
+				for(TipoCoordenada coord2: coordenadas)
+					tablero.setCelda(coord2, tab.getCelda((Coordenada1D)coord2));
 				
 				
 				
@@ -92,14 +97,14 @@ public class Juego {
 	 * getter de tablero
 	 * @return devuelve el tablero del juego
 	 */
-	public Tablero getTablero() {
+	public Tablero<TipoCoordenada> getTablero() {
 		return(tablero);
 	}
 	/**
 	 * getter de patrones usados
 	 * @return devuelve un arraylist con los patrones que se han usado
 	 */
-	public ArrayList<Patron> getPatrones(){
+	public ArrayList<Patron<TipoCoordenada>> getPatrones(){
 		return(patronesUsados);	
 	}
 }

@@ -1,21 +1,19 @@
 package mains;
 
-import modelo.Coordenada1D;
+import modelo.d1.Coordenada1D;
 import modelo.EstadoCelda;
 import modelo.Juego;
 import modelo.Patron;
-import modelo.Regla30;
-import modelo.Tablero1D;
-/**
- * main de la práctica de prueba
- */
+import modelo.d1.Regla30;
+import modelo.d1.Tablero1D;
+
 public class Main3 {
 
 	/**
-	 * @param args argumentos
-	 * @throws ExcepcionJuegoVida  excepcion
-	 * @throws ExcepcionExportacion excepcion
-	 * @throws ExcepcionLectura excepcion
+	 * @param args
+	 * @throws ExcepcionJuegoVida 
+	 * @throws ExcepcionExportacion 
+	 * @throws ExcepcionLectura 
 	 */
 	public static void main(String[] args)  {
 		try {

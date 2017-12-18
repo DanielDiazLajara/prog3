@@ -11,6 +11,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import modelo.d1.Coordenada1D;
+import modelo.d1.Tablero1D;
+
 public class Tablero1DP3Test {
 
 	Tablero1D tab;
@@ -74,7 +77,7 @@ public class Tablero1DP3Test {
 	//Vecinas de las coordenadas de los extremos
 	@Test
 	public void testGetPosicionesVecinasCCW0() {
-		ArrayList<Coordenada> vecinas = new ArrayList<Coordenada>();
+		ArrayList<Coordenada1D> vecinas = new ArrayList<Coordenada1D>();
 		try {
 			
 		vecinas = tab.getPosicionesVecinasCCW(new Coordenada1D(0));
@@ -89,7 +92,7 @@ public class Tablero1DP3Test {
 	
 	@Test
 	public void testGetPosicionesVecinasCCW8() {
-		ArrayList<Coordenada> vecinas = new ArrayList<Coordenada>();
+		ArrayList<Coordenada1D> vecinas = new ArrayList<Coordenada1D>();
 		try {
 			vecinas = tab.getPosicionesVecinasCCW(new Coordenada1D(8));
 			assertEquals("Numero vecinas",1,vecinas.size());
@@ -103,7 +106,7 @@ public class Tablero1DP3Test {
 	// Coordenadas interiores
 	@Test
 	public void testGetPosicionesVecinasCCWInteriores() {
-		ArrayList<Coordenada> vecinas = new ArrayList<Coordenada>();
+		ArrayList<Coordenada1D> vecinas = new ArrayList<Coordenada1D>();
 		try {
 		  for (int i=1; i<8; i++) {
 			vecinas = tab.getPosicionesVecinasCCW(new Coordenada1D(i));

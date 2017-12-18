@@ -4,19 +4,19 @@
 package entradasalida;
 
 import entradasalida.excepciones.ExcepcionGeneracion;
-import entradasalida.imagen.GeneradorGIFTablero1D;
-import entradasalida.imagen.GeneradorGifAnimadoTablero2D;
-import entradasalida.textoplano.GeneradorFicheroPlano;
+import entradasalida.gif.GeneradorTableroCoordenada1D;
+import entradasalida.gif.GeneradorTableroCoordenada2D;
+import entradasalida.txt.GeneradorFicheroPlano;
 import modelo.Coordenada;
-import modelo.Coordenada1D;
-import modelo.Coordenada2D;
 import modelo.Regla;
-import modelo.Regla30;
-import modelo.ReglaConway;
 import modelo.Tablero;
-import modelo.Tablero1D;
-import modelo.Tablero2D;
-import modelo.TableroCeldasCuadradas;
+import modelo.d1.Coordenada1D;
+import modelo.d1.Regla30;
+import modelo.d1.Tablero1D;
+import modelo.d2.Coordenada2D;
+import modelo.d2.ReglaConway;
+import modelo.d2.Tablero2D;
+import modelo.d2.TableroCeldasCuadradas;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
@@ -40,17 +40,19 @@ public class Factory {
 	public static IGeneradorFichero creaGeneradorFichero(Tablero tablero, String extension) throws ExcepcionGeneracion {
 		if(tablero==null||extension==null)
 			throw new ExcepcionArgumentosIncorrectos();
-		if(extension.equals("txt"))
-			return(new GeneradorFicheroPlano());
-		else if(extension.equals("gif")) {
-			if(tablero instanceof Tablero1D)
-				return(new GeneradorGIFTablero1D());
-			else if(tablero instanceof Tablero2D)
-				return(new GeneradorGifAnimadoTablero2D());
-		}	
-		else
-			throw new ExcepcionGeneracion("ERROR: extensión de archivo incorrecta");
-		return(null);
+		String cadena;
+		cadena="entradasalida."+extension+".GeneradorTablero"+tablero.getDimensiones().getClass().getSimpleName();
+		try {
+			Class c=Class.forName(cadena);
+			Object o= c.newInstance();
+			return((IGeneradorFichero)o);
+		} catch (ClassNotFoundException e) {
+			throw new ExcepcionGeneracion(cadena);
+		} catch (InstantiationException e) {
+			throw new ExcepcionGeneracion(e);
+		} catch (IllegalAccessException e) {
+			throw new ExcepcionGeneracion(e);
+		}
 	}
 	/**
 	 * Crea una reglaConway o Regla30 según el tablero pasado

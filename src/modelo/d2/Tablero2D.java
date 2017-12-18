@@ -1,8 +1,10 @@
 /**
  * @author Daniel Díaz Lajara 77634861V
  */
-package modelo;
+package modelo.d2;
 
+import modelo.EstadoCelda;
+import modelo.Tablero;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
 /**
@@ -10,7 +12,7 @@ import modelo.excepciones.ExcepcionEjecucion;
  * A partir de ella se crearan mediante herencia diferentes tipos
  * de tablero bidimensionales o de celdas cuadradas
  */
-public abstract class Tablero2D extends Tablero{
+public abstract class Tablero2D extends Tablero<Coordenada2D>{
 	/**
 	 * 
 	 * @param ancho del tablero a crear

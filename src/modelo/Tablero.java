@@ -15,24 +15,25 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  * Esta clase nos permite crear un tablero
  * que tiene dimensiones  y operar las 
  * diferentes celdas que allí se encuentran
+ * @param <TipoCoordenada> coordenada tipo que pasamos
  *
  */
-public abstract class Tablero {
+public abstract class Tablero<TipoCoordenada extends Coordenada> {
 	/**
-	 * celdas contiene un hashmap en el que cada celda tiene una coordenada y un estado
+	 * celdas contiene un hashmap en el que cada celda tiene una TipoCoordenada y un estado
 	 * 
 	 */
-	protected HashMap<Coordenada,EstadoCelda> celdas= new HashMap<Coordenada,EstadoCelda>();
+	protected HashMap<TipoCoordenada,EstadoCelda> celdas= new HashMap<TipoCoordenada,EstadoCelda>();
 	/**
 	 * dimensiones contiene las dimensiones x*y del tablero
 	 */
-	protected Coordenada dimensiones;
+	protected TipoCoordenada dimensiones;
 	/**
 	 * Constructor por defecto que crea el tablero e inicializa sus celdas a MUERTA
 	 * @param dimensiones pasa las medidas del tablero
 	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
 	 */
-	protected Tablero(Coordenada dimensiones) throws ExcepcionArgumentosIncorrectos{
+	protected Tablero(TipoCoordenada dimensiones) throws ExcepcionArgumentosIncorrectos{
 		if(dimensiones==null)
 			throw new ExcepcionArgumentosIncorrectos();
 		this.dimensiones=dimensiones;
@@ -41,15 +42,15 @@ public abstract class Tablero {
 	 * getter de dimensiones
 	 * @return devuelve las dimensiones del tablero
 	 */
-	public Coordenada getDimensiones() {
+	public TipoCoordenada getDimensiones() {
 		return(dimensiones);
 	}
 	/**
 	 * getter de las posiciones del tablero
 	 * @return devuelve un collection con las coordenadas de las celdas
 	 */
-	public Collection<Coordenada> getPosiciones(){
-		Collection <Coordenada> coordenadas = celdas.keySet();
+	public Collection<TipoCoordenada> getPosiciones(){
+		Collection <TipoCoordenada> coordenadas = celdas.keySet();
 		return(coordenadas);
 	}
 	
@@ -60,11 +61,11 @@ public abstract class Tablero {
 	 * @throws ExcepcionPosicionFueraTablero excepción posición 
 	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
 	 */
-	public EstadoCelda getCelda(Coordenada posicion) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos{
+	public EstadoCelda getCelda(TipoCoordenada posicion) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos{
 		if(posicion==null)
 			throw new ExcepcionArgumentosIncorrectos();
 		EstadoCelda estado;
-		Collection<Coordenada> coordenadas=getPosiciones();
+		Collection<TipoCoordenada> coordenadas=getPosiciones();
 		if(coordenadas.contains(posicion)) {
 			estado=celdas.get(posicion);
 			return(estado);
@@ -75,20 +76,20 @@ public abstract class Tablero {
 	}
 	/**
 	 * Setter para cambiar el estado de una celda
-	 * @param posicion es la celda cuyo estado queremos cambiar
+	 * @param coord2 es la celda cuyo estado queremos cambiar
 	 * @param e es el nuevo estado que queremos para la celda
 	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
 	 * @throws ExcepcionPosicionFueraTablero excepción posición
 	 */
-	public void setCelda(Coordenada posicion,EstadoCelda e) throws ExcepcionArgumentosIncorrectos,ExcepcionPosicionFueraTablero{
-		if(posicion==null||e==null)
+	public void setCelda(TipoCoordenada coord2,EstadoCelda e) throws ExcepcionArgumentosIncorrectos,ExcepcionPosicionFueraTablero{
+		if(coord2==null||e==null)
 			throw new ExcepcionArgumentosIncorrectos();
-		Collection<Coordenada> coordenadas=this.getPosiciones();
-		if(coordenadas.contains(posicion)) {
-			celdas.put(posicion,e);
+		Collection<TipoCoordenada> coordenadas=this.getPosiciones();
+		if(coordenadas.contains(coord2)) {
+			celdas.put(coord2,e);
 		}
 		else
-			throw new ExcepcionPosicionFueraTablero(dimensiones,posicion);
+			throw new ExcepcionPosicionFueraTablero(dimensiones,coord2);
 		}
 	/**
 	 * devuelve un array con las posiciones alrededor de una celda dada,
@@ -99,7 +100,7 @@ public abstract class Tablero {
 	 * @throws ExcepcionEjecucion excepción ejecución 
 	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
 	 */
-	public abstract ArrayList<Coordenada> getPosicionesVecinasCCW (Coordenada p)throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos,ExcepcionEjecucion;
+	public abstract ArrayList<TipoCoordenada> getPosicionesVecinasCCW (TipoCoordenada p)throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos,ExcepcionEjecucion;
 	/**
 	 * Intenta cargar un patron a partir de una celda dada
 	 * @param patron es el patron que quermos cargar en nuestro tablero
@@ -108,22 +109,22 @@ public abstract class Tablero {
 	 * @throws ExcepcionPosicionFueraTablero excepción posición
 	 * @throws ExcepcionEjecucion excepción ejecución
 	 */
-	public void cargaPatron(Patron patron, Coordenada coordinicial) throws ExcepcionArgumentosIncorrectos,ExcepcionEjecucion,ExcepcionPosicionFueraTablero{
+	public void cargaPatron(Patron<TipoCoordenada> patron, TipoCoordenada coordinicial) throws ExcepcionArgumentosIncorrectos,ExcepcionEjecucion,ExcepcionPosicionFueraTablero{
 		if(patron==null||coordinicial==null)
 			throw new ExcepcionArgumentosIncorrectos();
 		try {
 			boolean result=true;
-			Collection<Coordenada> coords_tablero=this.getPosiciones();
-			Collection<Coordenada> coords_patron=patron.getPosiciones();
-			for(Coordenada coord : coords_patron) {
+			Collection<TipoCoordenada> coords_tablero=this.getPosiciones();
+			Collection<TipoCoordenada> coords_patron=patron.getPosiciones();
+			for(TipoCoordenada coord : coords_patron) {
 			
 					if(result==true&&!coords_tablero.contains(coord.suma(coordinicial))) {
 						throw new ExcepcionPosicionFueraTablero(dimensiones,coord.suma(coordinicial));
 					}
 			}
 			if(result) {
-				for(Coordenada i : coords_patron) {
-					setCelda(i.suma(coordinicial),patron.getCelda(i));
+				for(TipoCoordenada i : coords_patron) {
+					setCelda((TipoCoordenada)i.suma(coordinicial),patron.getCelda(i));
 				}
 			}
 		}catch(ExcepcionCoordenadaIncorrecta e) {throw new ExcepcionEjecucion(e);}
@@ -134,10 +135,10 @@ public abstract class Tablero {
 	 * @return devuelve true si la celda se encuentra en el tablero y false si no
 	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos 
 	 */
-	public boolean contiene(Coordenada posicion) throws ExcepcionArgumentosIncorrectos{
+	public boolean contiene(TipoCoordenada posicion) throws ExcepcionArgumentosIncorrectos{
 		if(posicion==null)
 			throw new ExcepcionArgumentosIncorrectos();
-		Collection<Coordenada> coordenadas=getPosiciones();
+		Collection<TipoCoordenada> coordenadas=getPosiciones();
 		if(coordenadas.contains(posicion))
 			return(true);
 		else

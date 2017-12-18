@@ -1,10 +1,10 @@
 /**
  * @author Daniel Díaz Lajara 77634861V
  */
-package modelo;
+package modelo.d2;
 
+import modelo.Coordenada;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
-import modelo.excepciones.ExcepcionCoordenada2DIncorrecta;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 /**
  * La clase Coordenada2D nos permite crear coordenadas

@@ -1,10 +1,13 @@
 /**
  * @author Daniel Díaz Lajara 77634861V
  */
-package modelo;
+package modelo.d2;
 
 import java.util.ArrayList;
 
+import modelo.EstadoCelda;
+import modelo.Regla;
+import modelo.Tablero;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 /**
@@ -13,7 +16,7 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  * pasando estas de vivas a muertas o viceversa
  * según convenga.
  */
-public class ReglaConway extends Regla{
+public class ReglaConway extends Regla<Coordenada2D>{
 	/**
 	 * Constructor por defecto de ReglaConway
 	 */
@@ -27,16 +30,16 @@ public class ReglaConway extends Regla{
 	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos 
 	 * @throws ExcepcionPosicionFueraTablero excepción posición 
 	 */
-	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tab, Coordenada coord) throws ExcepcionPosicionFueraTablero,ExcepcionArgumentosIncorrectos{
+	public EstadoCelda calculaSiguienteEstadoCelda(Tablero<Coordenada2D> tab, Coordenada2D coord) throws ExcepcionPosicionFueraTablero,ExcepcionArgumentosIncorrectos{
 		if(coord==null||tab==null)
 			throw new ExcepcionArgumentosIncorrectos();
 		EstadoCelda estado_viva= EstadoCelda.VIVA;
 		EstadoCelda estado_muerta= EstadoCelda.MUERTA;
 
-		ArrayList<Coordenada> lista=tab.getPosicionesVecinasCCW(coord);
+		ArrayList<Coordenada2D> lista=tab.getPosicionesVecinasCCW(coord);
 		//Contamos vivas y muertas
 		int viva=new Integer(0);
-		for (Coordenada i:lista) {
+		for (Coordenada2D i:lista) {
 			if(tab.getCelda(i)==estado_viva)
 				viva++;
 		}

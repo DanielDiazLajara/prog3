@@ -11,8 +11,9 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  * La clase Patron nos ayuda a crear patrrones en forma de tableros
  * Estos patrones podrán ser añadidos a los tableros en el juego
  * siempre que quepan en el mismo
+ * @param <TipoCoordenada> tipo que pasamos
  */
-public class Patron {
+public class Patron<TipoCoordenada extends Coordenada> {
 	/**
 	 * El atributo nombre contiene el nombre del patrón
 	 */
@@ -20,14 +21,14 @@ public class Patron {
 	/** 
 	* El atributo tablero contiene el tablero de la clase
 	*/
-	Tablero tablero;
+	Tablero<TipoCoordenada> tablero;
 	/**
 	 * Constructor de Patron
 	 * @param nombre pasa un nombre al patrón
 	 * @param tablero da un tablero al patrón
 	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
 	 */
-	public Patron(String nombre,Tablero tablero) throws ExcepcionArgumentosIncorrectos{
+	public Patron(String nombre,Tablero<TipoCoordenada> tablero) throws ExcepcionArgumentosIncorrectos{
 		if(nombre==null||tablero==null)
 			throw new ExcepcionArgumentosIncorrectos();
 		this.nombre=new String(nombre);
@@ -47,10 +48,10 @@ public class Patron {
 	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
 	 * @throws ExcepcionPosicionFueraTablero excepción posición 
 	 */
-	public EstadoCelda getCelda(Coordenada coord) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos{
+	public EstadoCelda getCelda(TipoCoordenada coord) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos{
 		if(coord==null)
 			throw new ExcepcionArgumentosIncorrectos();
-		Collection<Coordenada> coordenadas=tablero.getPosiciones();
+		Collection<TipoCoordenada> coordenadas=tablero.getPosiciones();
 		EstadoCelda estado;
 		if(coordenadas.contains(coord)) {
 			estado=tablero.getCelda(coord);
@@ -64,8 +65,8 @@ public class Patron {
 	 * Devuelve las coordenadas de un tablero en un orden cualquiera
 	 * @return un collection de coordenadas del tablero
 	 */
-	public Collection<Coordenada> getPosiciones(){
-		Collection <Coordenada> coordenadas = tablero.getPosiciones();
+	public Collection<TipoCoordenada> getPosiciones(){
+		Collection <TipoCoordenada> coordenadas = tablero.getPosiciones();
 		return(coordenadas);		
 	}
 	@Override

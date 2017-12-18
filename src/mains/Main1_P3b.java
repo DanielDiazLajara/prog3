@@ -2,8 +2,8 @@ package mains;
 
 import java.util.ArrayList;
 
-import modelo.Coordenada2D;
-import modelo.excepciones.ExcepcionCoordenada2DIncorrecta;
+import modelo.d2.Coordenada2D;
+import modelo.d2.ExcepcionCoordenada2DIncorrecta;
 
 /**
 @author drizo
@@ -12,7 +12,7 @@ public class Main1_P3b {
 
 	/**
 	 * Clase principal de la P1
-	 * @param args argumentos pasados
+	 * @param args
 	 * @throws ExcepcionCoordenada2DIncorrecta 
 	 */
 	public static void main(String[] args)  {

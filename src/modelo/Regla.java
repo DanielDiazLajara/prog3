@@ -9,8 +9,9 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  * Clase abstracta Regla
  * De ella derivan, con herencia los diferentes tipos de reglas
  * que se pueden usar en el juego
+ * @param <TipoCoordenada> coordenada tipo que pasamos
  */
-public abstract class Regla {
+public abstract class Regla<TipoCoordenada extends Coordenada> {
 /**
  * 
  * @param tab tablero que pasamos
@@ -19,5 +20,5 @@ public abstract class Regla {
  * @throws ExcepcionPosicionFueraTablero excepción posición
  * @throws ExcepcionArgumentosIncorrectos excepción argumentos
  */
-	public abstract EstadoCelda calculaSiguienteEstadoCelda(Tablero tab, Coordenada coord) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos;
+	public abstract EstadoCelda calculaSiguienteEstadoCelda(Tablero<TipoCoordenada> tab, TipoCoordenada coord) throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos;
 }

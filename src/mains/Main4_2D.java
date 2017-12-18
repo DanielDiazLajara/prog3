@@ -4,13 +4,13 @@ import java.io.File;
 
 import entradasalida.Factory;
 import entradasalida.IGeneradorFichero;
-import modelo.Coordenada2D;
+import modelo.d2.Coordenada2D;
 import modelo.EstadoCelda;
 import modelo.Juego;
 import modelo.Patron;
-import modelo.ReglaConway;
-import modelo.TableroCeldasCuadradas;
-import modelo.excepciones.ExcepcionCoordenada2DIncorrecta;
+import modelo.d2.ReglaConway;
+import modelo.d2.TableroCeldasCuadradas;
+import modelo.d2.ExcepcionCoordenada2DIncorrecta;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
@@ -18,10 +18,7 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
 @author drizo
  **/
 public class Main4_2D {
-	/**
-	 * prueba 2
-	 * @param args argumentos
-	 */
+
 	public static void main(String[] args) {
 		if (args.length != 1) {
 			System.err.println("Falta el nombre del fichero de salida");			

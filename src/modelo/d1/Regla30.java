@@ -1,10 +1,13 @@
 /**
  * @author Daniel Díaz Lajara 77634861V
  */
-package modelo;
+package modelo.d1;
 
 import java.util.ArrayList;
 
+import modelo.EstadoCelda;
+import modelo.Regla;
+import modelo.Tablero;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 /**
@@ -12,7 +15,7 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  * regla 30 es una regla para el juego que
  * será usada en tableros unidimensionales mayormente
  */
-public class Regla30 extends Regla{
+public class Regla30 extends Regla<Coordenada1D>{
 	/**
 	 * Constructor por defecto de regla
 	 */
@@ -25,11 +28,11 @@ public class Regla30 extends Regla{
 	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
 	 * @throws ExcepcionPosicionFueraTablero excepción posición 
 	 */
-	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tab, Coordenada coord)
+	public EstadoCelda calculaSiguienteEstadoCelda(Tablero<Coordenada1D> tab, Coordenada1D coord)
 			throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos {
 		if(coord==null||tab==null)
 			throw new ExcepcionArgumentosIncorrectos();
-		ArrayList<Coordenada> lista=tab.getPosicionesVecinasCCW(coord);
+		ArrayList<Coordenada1D> lista=tab.getPosicionesVecinasCCW(coord);
 		EstadoCelda viva=EstadoCelda.VIVA;
 		EstadoCelda muerta= EstadoCelda.MUERTA;
 		EstadoCelda estado=EstadoCelda.VIVA;

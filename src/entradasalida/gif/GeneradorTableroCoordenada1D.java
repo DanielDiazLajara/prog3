@@ -1,16 +1,16 @@
 /**
  * Daniel Díaz Lajara 77634861V
  */
-package entradasalida.imagen;
+package entradasalida.gif;
 
 import java.io.File;
 import entradasalida.IGeneradorFichero;
 import entradasalida.excepciones.ExcepcionGeneracion;
 import gifs.ImagenGIF;
 import modelo.Coordenada;
-import modelo.Coordenada1D;
 import modelo.EstadoCelda;
 import modelo.Juego;
+import modelo.d1.Coordenada1D;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
@@ -20,11 +20,11 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
  * las iteraciones de un juego en concreto
  * sea dicho juego 1D o 2D
  */
-public class GeneradorGIFTablero1D implements IGeneradorFichero{
+public class GeneradorTableroCoordenada1D implements IGeneradorFichero{
 	/**
 	 * Constructor
 	 */
-	public GeneradorGIFTablero1D() {}
+	public GeneradorTableroCoordenada1D() {}
 	/**
 	 * Esta función es la que grabará en el fichero el contenido deseado
 	 * @param f es el fichero donde guardar el juego

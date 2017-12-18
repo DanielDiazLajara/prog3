@@ -1,11 +1,13 @@
 /**
  * @author Daniel Díaz Lajara 77634861V
  */
-package modelo;
+package modelo.d2;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
+import modelo.EstadoCelda;
+import modelo.Imprimible;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
@@ -35,15 +37,15 @@ public class TableroCeldasCuadradas extends Tablero2D implements Imprimible{
 	 * @throws ExcepcionEjecucion excepción ejecución
 	 * @throws ExcepcionArgumentosIncorrectos excepción argumentos
 	 */
-	public ArrayList<Coordenada> getPosicionesVecinasCCW (Coordenada coord)throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos,ExcepcionEjecucion{
+	public ArrayList<Coordenada2D> getPosicionesVecinasCCW (Coordenada2D coord)throws ExcepcionPosicionFueraTablero, ExcepcionArgumentosIncorrectos,ExcepcionEjecucion{
 		int x=new Integer(0);
 		int y=new Integer(0);
 
 		if(coord==null||!(coord instanceof Coordenada2D))
 			throw new ExcepcionArgumentosIncorrectos();
 		Coordenada2D p=(Coordenada2D)coord;
-		ArrayList<Coordenada> lista =new ArrayList<Coordenada>();
-		Collection<Coordenada> coordenadas=this.getPosiciones();
+		ArrayList<Coordenada2D> lista =new ArrayList<Coordenada2D>();
+		Collection<Coordenada2D> coordenadas=this.getPosiciones();
 		if (contiene(p)) {
 			try {
 				x=p.getX()-1;
@@ -103,11 +105,11 @@ public class TableroCeldasCuadradas extends Tablero2D implements Imprimible{
 	 */
 	public String toString() throws ExcepcionEjecucion{
 		EstadoCelda estado_viva= EstadoCelda.VIVA;
-		Collection<Coordenada> coords=getPosiciones();
+		Collection<Coordenada2D> coords=getPosiciones();
 		StringBuilder cadena=new StringBuilder();
 		int x=new Integer(0);
 		int y=new Integer(0);
-		for(Coordenada coord : coords) {
+		for(Coordenada2D coord : coords) {
 			Coordenada2D coord2=(Coordenada2D)coord;
 			if(coord2.getX()>x)
 				x=coord2.getX();
@@ -148,11 +150,11 @@ public class TableroCeldasCuadradas extends Tablero2D implements Imprimible{
 	 */
 	public String generaCadena() {
 		EstadoCelda estado_viva= EstadoCelda.VIVA;
-		Collection<Coordenada> coords=getPosiciones();
+		Collection<Coordenada2D> coords=getPosiciones();
 		StringBuilder cadena=new StringBuilder();
 		int x=new Integer(0);
 		int y=new Integer(0);
-		for(Coordenada coord : coords) {
+		for(Coordenada2D coord : coords) {
 			Coordenada2D coord2=(Coordenada2D)coord;
 			if(coord2.getX()>x)
 				x=coord2.getX();
